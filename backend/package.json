@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@payloadcms/db-postgres": "latest",
+    "@payloadcms/email-nodemailer": "^3.14.0",
     "@payloadcms/next": "latest",
     "@payloadcms/plugin-form-builder": "^3.14.0",
     "@payloadcms/richtext-lexical": "latest",
