@@ -663,6 +663,7 @@ export interface Meta {
     relationTo: 'pages';
     value: number | Page;
   };
+  favicon?: (number | null) | Media;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -705,6 +706,7 @@ export interface MainMenu {
 export interface MetaSelect<T extends boolean = true> {
   websiteTitle?: T;
   homePage?: T;
+  favicon?: T;
   meta?:
     | T
     | {

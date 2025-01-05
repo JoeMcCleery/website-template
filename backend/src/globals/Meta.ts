@@ -19,5 +19,10 @@ export const Meta: GlobalConfig = {
       relationTo: ['pages'],
       required: true,
     },
+    {
+      name: 'favicon',
+      type: 'upload',
+      relationTo: 'media',
+    },
   ],
 }
