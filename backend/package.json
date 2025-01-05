@@ -17,6 +17,7 @@
   "dependencies": {
     "@payloadcms/db-postgres": "latest",
     "@payloadcms/next": "latest",
+    "@payloadcms/plugin-form-builder": "^3.14.0",
     "@payloadcms/richtext-lexical": "latest",
     "cross-env": "^7.0.3",
     "graphql": "^16.8.1",
