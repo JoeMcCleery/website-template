@@ -71,8 +71,8 @@ services:
     environment:
       NEXT_PUBLIC_SERVER_URL: https://cms.${DOMAIN_APP}
       DATABASE_URI: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
-    env_file:
-      - ./backend/.env
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+      WATCHPACK_POLLING: ${WATCHPACK_POLLING}
     restart: unless-stopped
     labels:
       - traefik.enable=true
