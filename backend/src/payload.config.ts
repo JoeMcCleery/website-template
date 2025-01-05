@@ -15,14 +15,14 @@ import sharp from 'sharp'
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import { seoPlugin } from '@payloadcms/plugin-seo'
-import { getMeta } from './utilities/getGlobals'
+import { getMeta } from '@/utilities/getGlobals'
 
-import { Pages } from './collections/Pages'
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
+import { Pages } from '@/collections/Pages'
+import { Users } from '@/collections/Users'
+import { Media } from '@/collections/Media'
 
-import { Meta } from './globals/Meta'
-import { MainMenu } from './globals/MainMenu'
+import { Meta } from '@/globals/Meta'
+import { MainMenu } from '@/globals/MainMenu'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,6 +34,18 @@ export default buildConfig({
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
+    },
+    livePreview: {
+      url: ({ data }) => data.url,
+      collections: ['pages'],
+      breakpoints: [
+        {
+          label: 'Mobile',
+          name: 'mobile',
+          width: 375,
+          height: 667,
+        },
+      ],
     },
   },
   globals: [Meta, MainMenu],
@@ -85,14 +97,18 @@ export default buildConfig({
     }),
     seoPlugin({
       tabbedUI: true,
+      globals: ['meta'],
       collections: ['pages'],
       uploadsCollection: 'media',
-      generateTitle: async ({ doc }) => {
+      generateTitle: async ({ doc, collectionSlug }) => {
         const meta = await getMeta()
-        return `${meta.websiteTitle} - ${doc?.title}`
+        const title = meta.websiteTitle
+        if (collectionSlug === 'pages') {
+          return `${title} - ${doc.title}`
+        }
+        return title
       },
-      generateURL: ({ doc, collectionSlug }) =>
-        `https://${process.env.DOMAIN_APP || 'localhost'}/${collectionSlug}/${doc?.slug}`,
+      generateURL: ({ doc }) => doc.url ?? `https://${process.env.DOMAIN_APP || 'localhost'}`,
     }),
   ],
 })

@@ -1,6 +1,6 @@
 import type { Field } from 'payload'
 
-import deepMerge from '../utilities/deepMerge'
+import deepMerge from '@/utilities/deepMerge'
 
 export const appearanceOptions = {
   default: {

@@ -77,6 +77,7 @@ export interface Page {
   id: number;
   title: string;
   slug?: string | null;
+  url?: string | null;
   layout: {
     form: number | Form;
     enableIntro?: boolean | null;
@@ -413,6 +414,7 @@ export interface PayloadMigration {
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  url?: T;
   layout?:
     | T
     | {
@@ -661,6 +663,14 @@ export interface Meta {
     relationTo: 'pages';
     value: number | Page;
   };
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -695,6 +705,13 @@ export interface MainMenu {
 export interface MetaSelect<T extends boolean = true> {
   websiteTitle?: T;
   homePage?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

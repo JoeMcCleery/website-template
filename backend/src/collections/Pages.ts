@@ -1,8 +1,8 @@
 import type { CollectionConfig } from 'payload'
 
-import { FormBlock } from '../../blocks/Form'
-import { slugField } from '../../fields/slug'
-import { publishedOnly } from './access/publishedOnly'
+import { FormBlock } from '@/blocks/Form'
+import { slugField } from '@/fields/slug'
+import { publishedOnly } from '@/access/publishedOnly'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -25,6 +25,20 @@ export const Pages: CollectionConfig = {
               required: true,
             },
             slugField(),
+            {
+              name: 'url',
+              type: 'text',
+              virtual: true,
+              admin: {
+                readOnly: true,
+              },
+              hooks: {
+                afterRead: [
+                  ({ data }) =>
+                    `https://${process.env.DOMAIN_APP || 'localhost' + (data?.slug ? `/${data?.slug}` : '')}`,
+                ],
+              },
+            },
           ],
           label: 'Meta',
         },

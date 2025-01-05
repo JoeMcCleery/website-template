@@ -3,7 +3,7 @@ import type { Config, Meta } from 'src/payload-types'
 import { unstable_cache } from 'next/cache'
 import { getPayload } from 'payload'
 
-import configPromise from '../payload.config'
+import configPromise from '@/payload.config'
 
 type Global = keyof Config['globals']
 
