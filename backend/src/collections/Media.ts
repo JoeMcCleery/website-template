@@ -12,5 +12,14 @@ export const Media: CollectionConfig = {
       required: true,
     },
   ],
-  upload: true,
+  upload: {
+    imageSizes: [
+      {
+        name: 'square',
+        width: 256,
+        height: 256,
+      },
+    ],
+    adminThumbnail: 'square',
+  },
 }
