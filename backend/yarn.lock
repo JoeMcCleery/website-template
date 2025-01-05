@@ -1231,6 +1231,14 @@
     "@payloadcms/ui" "3.14.0"
     escape-html "^1.0.3"
 
+"@payloadcms/plugin-seo@^3.14.0":
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/@payloadcms/plugin-seo/-/plugin-seo-3.14.0.tgz#96670a8eb015569dc9395e3b3baa361fbfe3c072"
+  integrity sha512-Qt5+DhtcC46kqyD9nVGNl5EoLb0AQJx/xtiq9zXnmOVIheMjZRzuZV3I9TEHHXh5LG9BNOb3ZMvYYrzpbYmKtw==
+  dependencies:
+    "@payloadcms/translations" "3.14.0"
+    "@payloadcms/ui" "3.14.0"
+
 "@payloadcms/richtext-lexical@latest":
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/@payloadcms/richtext-lexical/-/richtext-lexical-3.14.0.tgz#3c2002dd3e25183c43d420ca61de8ecfdd3514f2"
