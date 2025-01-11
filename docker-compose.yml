@@ -85,17 +85,19 @@ services:
       - traefik.http.routers.backend.tls=true
       - traefik.http.routers.backend.rule=Host(`cms.${DOMAIN_APP}`)
 
-  # frontend:
-  #   build: ./frontend
-  #   container_name: ${PROJECT_SUFFIX}_frontend
-  #   volumes:
-  #     - ./frontend:/app
-  #     - frontend_node_modules:/app/node_modules
-  #   restart: unless-stopped
-  #   labels:
-  #     - traefik.enable=true
-  #     - traefik.http.routers.frontend.tls=true
-  #     - traefik.http.routers.frontend.rule=Host(`${DOMAIN_APP}`)
+  frontend:
+    build: ./frontend
+    container_name: ${PROJECT_SUFFIX}_frontend
+    volumes:
+      - ./frontend:/app
+      - frontend_node_modules:/app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=${CHOKIDAR_USEPOLLING}
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.frontend.tls=true
+      - traefik.http.routers.frontend.rule=Host(`${DOMAIN_APP}`)
 
 volumes:
   letsencrypt:
