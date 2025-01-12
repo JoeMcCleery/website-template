@@ -1,7 +1,7 @@
 services:
   traefik:
     image: traefik:v3.2
-    container_name: ${PROJECT_SUFFIX}_traefik
+    container_name: ${PROJECT_PREFIX}_traefik
     command:
       - --api.insecure=false
       - --providers.docker=true
@@ -28,7 +28,7 @@ services:
 
   db:
     image: postgres
-    container_name: ${PROJECT_SUFFIX}_db
+    container_name: ${PROJECT_PREFIX}_db
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -39,7 +39,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: ${PROJECT_SUFFIX}_pgadmin
+    container_name: ${PROJECT_PREFIX}_pgadmin
     depends_on:
       - db
     environment:
@@ -60,14 +60,27 @@ services:
       - traefik.http.routers.pgadmin.tls=true
       - traefik.http.routers.pgadmin.rule=Host(`pgadmin.${DOMAIN_APP}`)
 
+  localstack:
+    image: localstack/localstack
+    container_name: ${PROJECT_PREFIX}_localstack
+    environment:
+      SERVICES: s3
+      S3_BUCKET: ${S3_BUCKET}
+    volumes:
+      - ./localstack/volume:/var/lib/localstack
+      - ./localstack/init:/etc/localstack/init/ready.d
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.localstack.tls=true
+      - traefik.http.routers.localstack.rule=Host(`localstack.${DOMAIN_APP}`)
+
   backend:
     build: ./backend
-    container_name: ${PROJECT_SUFFIX}_backend
+    container_name: ${PROJECT_PREFIX}_backend
     depends_on:
       - db
-    volumes:
-      - ./backend:/app
-      - backend_node_modules:/app/node_modules
     environment:
       NEXT_PUBLIC_SERVER_URL: https://cms.${DOMAIN_APP}
       DOMAIN_APP: ${DOMAIN_APP}
@@ -79,6 +92,14 @@ services:
       SMTP_HOST: ${SMTP_HOST}
       SMTP_USER: ${SMTP_USER}
       SMTP_PASS: ${SMTP_PASS}
+      AWS_ENDPOINT: ${AWS_ENDPOINT}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      S3_BUCKET: ${S3_BUCKET}
+    volumes:
+      - ./backend:/app
+      - backend_node_modules:/app/node_modules
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -87,13 +108,13 @@ services:
 
   frontend:
     build: ./frontend
-    container_name: ${PROJECT_SUFFIX}_frontend
+    container_name: ${PROJECT_PREFIX}_frontend
+    environment:
+      CHOKIDAR_USEPOLLING: ${CHOKIDAR_USEPOLLING}
+      NUXT_PUBLIC_API_URL: https://cms.${DOMAIN_APP}/api
     volumes:
       - ./frontend:/app
       - frontend_node_modules:/app/node_modules
-    environment:
-      - CHOKIDAR_USEPOLLING=${CHOKIDAR_USEPOLLING}
-      - NUXT_PUBLIC_API_URL=https://cms.${DOMAIN_APP}/api
     restart: unless-stopped
     labels:
       - traefik.enable=true

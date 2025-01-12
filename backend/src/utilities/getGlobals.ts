@@ -1,7 +1,6 @@
-import type { Config, Meta } from 'src/payload-types'
-
 import { unstable_cache } from 'next/cache'
 import { getPayload } from 'payload'
+import type { Config, Meta } from 'src/payload-types'
 
 import configPromise from '@/payload.config'
 

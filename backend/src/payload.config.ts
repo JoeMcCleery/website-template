@@ -1,28 +1,29 @@
+import path from 'path'
+import { buildConfig } from 'payload'
+import sharp from 'sharp'
+import { fileURLToPath } from 'url'
+
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
+import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
+import { seoPlugin } from '@payloadcms/plugin-seo'
 import {
   BoldFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
   ItalicFeature,
-  lexicalEditor,
   LinkFeature,
+  lexicalEditor,
 } from '@payloadcms/richtext-lexical'
-import path from 'path'
-import { buildConfig } from 'payload'
-import { fileURLToPath } from 'url'
-import sharp from 'sharp'
-import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
-import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
-import { seoPlugin } from '@payloadcms/plugin-seo'
-import { getMeta } from '@/utilities/getGlobals'
+import { s3Storage } from '@payloadcms/storage-s3'
 
+import { Media } from '@/collections/Media'
 import { Pages } from '@/collections/Pages'
 import { Users } from '@/collections/Users'
-import { Media } from '@/collections/Media'
-
-import { Meta } from '@/globals/Meta'
 import { MainMenu } from '@/globals/MainMenu'
+import { Meta } from '@/globals/Meta'
+import { getMeta } from '@/utilities/getGlobals'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -90,6 +91,21 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
+    s3Storage({
+      collections: {
+        media: true,
+      },
+      bucket: process.env.S3_BUCKET ?? 'website-template-bucket',
+      config: {
+        endpoint: process.env.AWS_ENDPOINT,
+        forcePathStyle: true,
+        credentials: {
+          accessKeyId: process.env.AWS_ACCESS_KEY_ID ?? '',
+          secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? '',
+        },
+        region: process.env.AWS_DEFAULT_REGION ?? 'ap-southeast-2',
+      },
+    }),
     formBuilderPlugin({
       fields: {
         payment: false,
@@ -108,7 +124,8 @@ export default buildConfig({
         }
         return title
       },
-      generateURL: ({ doc }) => doc.url ?? `https://${process.env.DOMAIN_APP || 'localhost'}`,
+      generateURL: ({ doc }) =>
+        doc.url ?? `https://${process.env.DOMAIN_APP || 'https://localhost'}`,
     }),
   ],
 })
