@@ -9,7 +9,7 @@ export default defineNuxtConfig({
       apiUrl: '',
     },
   },
-  modules: ['@nuxtjs/apollo'],
+  modules: ['@nuxtjs/apollo', '@nuxtjs/tailwindcss'],
   apollo: {
     clients: {
       default: {
