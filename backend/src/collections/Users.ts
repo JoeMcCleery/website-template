@@ -27,6 +27,11 @@ export const Users: CollectionConfig = {
       type: 'text',
       required: true,
     },
-    virtualField('fullName', fullNameHook),
+    virtualField('fullName', fullNameHook, { admin: { hidden: true } }),
+    {
+      name: 'avatar',
+      type: 'upload',
+      relationTo: 'media',
+    },
   ],
 }
