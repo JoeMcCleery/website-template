@@ -4,9 +4,9 @@ import { publishedOnly } from '@/access/publishedOnly'
 import { FormBlock } from '@/blocks/Form'
 import { slugField } from '@/fields/slug'
 import { virtualField } from '@/fields/virtual'
-import { getUrl } from '@/utilities/getUrl'
+import { getAppURL } from '@/utilities/getURL'
 
-const urlHook: FieldHook = ({ data, originalDoc }) => getUrl(data?.slug || originalDoc?.slug)
+const urlHook: FieldHook = ({ data, originalDoc }) => getAppURL(data?.slug || originalDoc?.slug)
 
 export const Pages: CollectionConfig = {
   slug: 'pages',

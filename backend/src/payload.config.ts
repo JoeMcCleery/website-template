@@ -24,7 +24,7 @@ import { Users } from '@/collections/Users'
 import { MainMenu } from '@/globals/MainMenu'
 import { Meta } from '@/globals/Meta'
 import { getMeta } from '@/utilities/getGlobals'
-import { getUrl } from '@/utilities/getUrl'
+import { appURL, cmsURL } from '@/utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -32,13 +32,16 @@ const dirname = path.dirname(filename)
 const devMode = process.env.NODE_ENV == 'development'
 
 export default buildConfig({
+  serverURL: cmsURL,
+  cors: [appURL],
+  csrf: [appURL],
   admin: {
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
     },
     livePreview: {
-      url: ({ data }) => data.url ?? getUrl(),
+      url: ({ data }) => data.url ?? appURL,
       collections: ['pages'],
       breakpoints: [
         {
@@ -125,7 +128,7 @@ export default buildConfig({
         }
         return title
       },
-      generateURL: ({ doc }) => doc.url ?? getUrl(),
+      generateURL: ({ doc }) => doc.url ?? appURL,
     }),
   ],
 })
