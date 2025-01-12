@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <NuxtLink v-for="item in navItems" v-bind="item.props">{{ item.label }}</NuxtLink>
+    <BaseLink v-for="item in navItems" v-bind="item.props">{{ item.label }}</BaseLink>
   </nav>
 </template>
 
