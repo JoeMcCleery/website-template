@@ -4,7 +4,7 @@ import { publishedOnly } from '@/access/publishedOnly'
 import { FormBlock } from '@/blocks/Form'
 import { slugField } from '@/fields/slug'
 import { virtualField } from '@/fields/virtual'
-import { getPath } from '@/utilities/getURL'
+import { getPath } from '@/utilities/getUrl'
 
 const pathHook: FieldHook = ({ data, originalDoc }) => getPath(data?.slug || originalDoc?.slug)
 
