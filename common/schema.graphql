@@ -42,7 +42,7 @@ type Page {
   id: Int!
   title: String
   slug: String
-  url: String
+  path: String
   layout: [Page_Layout!]!
   meta: Page_Meta
   updatedAt: DateTime
@@ -249,7 +249,7 @@ type Pages {
 input Page_where {
   title: Page_title_operator
   slug: Page_slug_operator
-  url: Page_url_operator
+  path: Page_path_operator
   meta__title: Page_meta__title_operator
   meta__description: Page_meta__description_operator
   meta__image: Page_meta__image_operator
@@ -282,7 +282,7 @@ input Page_slug_operator {
   exists: Boolean
 }
 
-input Page_url_operator {
+input Page_path_operator {
   equals: String
   not_equals: String
   like: String
@@ -370,7 +370,7 @@ input Page_id_operator {
 input Page_where_and {
   title: Page_title_operator
   slug: Page_slug_operator
-  url: Page_url_operator
+  path: Page_path_operator
   meta__title: Page_meta__title_operator
   meta__description: Page_meta__description_operator
   meta__image: Page_meta__image_operator
@@ -385,7 +385,7 @@ input Page_where_and {
 input Page_where_or {
   title: Page_title_operator
   slug: Page_slug_operator
-  url: Page_url_operator
+  path: Page_path_operator
   meta__title: Page_meta__title_operator
   meta__description: Page_meta__description_operator
   meta__image: Page_meta__image_operator
@@ -413,7 +413,7 @@ type pagesDocAccess {
 type PagesDocAccessFields {
   title: PagesDocAccessFields_title
   slug: PagesDocAccessFields_slug
-  url: PagesDocAccessFields_url
+  path: PagesDocAccessFields_path
   layout: PagesDocAccessFields_layout
   meta: PagesDocAccessFields_meta
   updatedAt: PagesDocAccessFields_updatedAt
@@ -467,26 +467,26 @@ type PagesDocAccessFields_slug_Delete {
   permission: Boolean!
 }
 
-type PagesDocAccessFields_url {
-  create: PagesDocAccessFields_url_Create
-  read: PagesDocAccessFields_url_Read
-  update: PagesDocAccessFields_url_Update
-  delete: PagesDocAccessFields_url_Delete
+type PagesDocAccessFields_path {
+  create: PagesDocAccessFields_path_Create
+  read: PagesDocAccessFields_path_Read
+  update: PagesDocAccessFields_path_Update
+  delete: PagesDocAccessFields_path_Delete
 }
 
-type PagesDocAccessFields_url_Create {
+type PagesDocAccessFields_path_Create {
   permission: Boolean!
 }
 
-type PagesDocAccessFields_url_Read {
+type PagesDocAccessFields_path_Read {
   permission: Boolean!
 }
 
-type PagesDocAccessFields_url_Update {
+type PagesDocAccessFields_path_Update {
   permission: Boolean!
 }
 
-type PagesDocAccessFields_url_Delete {
+type PagesDocAccessFields_path_Delete {
   permission: Boolean!
 }
 
@@ -723,7 +723,7 @@ type PageVersion {
 type PageVersion_Version {
   title: String
   slug: String
-  url: String
+  path: String
   layout: [PageVersion_Version_Layout!]!
   meta: PageVersion_Version_Meta
   updatedAt: DateTime
@@ -762,7 +762,7 @@ input versionsPage_where {
   parent: versionsPage_parent_operator
   version__title: versionsPage_version__title_operator
   version__slug: versionsPage_version__slug_operator
-  version__url: versionsPage_version__url_operator
+  version__path: versionsPage_version__path_operator
   version__meta__title: versionsPage_version__meta__title_operator
   version__meta__description: versionsPage_version__meta__description_operator
   version__meta__image: versionsPage_version__meta__image_operator
@@ -807,7 +807,7 @@ input versionsPage_version__slug_operator {
   exists: Boolean
 }
 
-input versionsPage_version__url_operator {
+input versionsPage_version__path_operator {
   equals: String
   not_equals: String
   like: String
@@ -924,7 +924,7 @@ input versionsPage_where_and {
   parent: versionsPage_parent_operator
   version__title: versionsPage_version__title_operator
   version__slug: versionsPage_version__slug_operator
-  version__url: versionsPage_version__url_operator
+  version__path: versionsPage_version__path_operator
   version__meta__title: versionsPage_version__meta__title_operator
   version__meta__description: versionsPage_version__meta__description_operator
   version__meta__image: versionsPage_version__meta__image_operator
@@ -943,7 +943,7 @@ input versionsPage_where_or {
   parent: versionsPage_parent_operator
   version__title: versionsPage_version__title_operator
   version__slug: versionsPage_version__slug_operator
-  version__url: versionsPage_version__url_operator
+  version__path: versionsPage_version__path_operator
   version__meta__title: versionsPage_version__meta__title_operator
   version__meta__description: versionsPage_version__meta__description_operator
   version__meta__image: versionsPage_version__meta__image_operator
@@ -3788,6 +3788,7 @@ type MainMenu_NavItems_Link {
   reference(draft: Boolean): MainMenu_NavItems_Link_Reference_Relationship
   url: String
   label: String
+  appearance: MainMenu_NavItems_Link_appearance
 }
 
 enum MainMenu_NavItems_Link_type {
@@ -3805,6 +3806,10 @@ enum MainMenu_NavItems_Link_Reference_RelationTo {
 }
 
 union MainMenu_NavItems_Link_Reference = Page
+
+enum MainMenu_NavItems_Link_appearance {
+  button
+}
 
 type main_menuDocAccess {
   fields: MainMenuDocAccessFields
@@ -3877,6 +3882,7 @@ type MainMenuDocAccessFields_navItems_link_Fields {
   reference: MainMenuDocAccessFields_navItems_link_reference
   url: MainMenuDocAccessFields_navItems_link_url
   label: MainMenuDocAccessFields_navItems_link_label
+  appearance: MainMenuDocAccessFields_navItems_link_appearance
 }
 
 type MainMenuDocAccessFields_navItems_link_type {
@@ -3994,6 +4000,29 @@ type MainMenuDocAccessFields_navItems_link_label_Delete {
   permission: Boolean!
 }
 
+type MainMenuDocAccessFields_navItems_link_appearance {
+  create: MainMenuDocAccessFields_navItems_link_appearance_Create
+  read: MainMenuDocAccessFields_navItems_link_appearance_Read
+  update: MainMenuDocAccessFields_navItems_link_appearance_Update
+  delete: MainMenuDocAccessFields_navItems_link_appearance_Delete
+}
+
+type MainMenuDocAccessFields_navItems_link_appearance_Create {
+  permission: Boolean!
+}
+
+type MainMenuDocAccessFields_navItems_link_appearance_Read {
+  permission: Boolean!
+}
+
+type MainMenuDocAccessFields_navItems_link_appearance_Update {
+  permission: Boolean!
+}
+
+type MainMenuDocAccessFields_navItems_link_appearance_Delete {
+  permission: Boolean!
+}
+
 type MainMenuDocAccessFields_navItems_id {
   create: MainMenuDocAccessFields_navItems_id_Create
   read: MainMenuDocAccessFields_navItems_id_Read
@@ -4098,7 +4127,7 @@ type pagesAccess {
 type PagesFields {
   title: PagesFields_title
   slug: PagesFields_slug
-  url: PagesFields_url
+  path: PagesFields_path
   layout: PagesFields_layout
   meta: PagesFields_meta
   updatedAt: PagesFields_updatedAt
@@ -4152,26 +4181,26 @@ type PagesFields_slug_Delete {
   permission: Boolean!
 }
 
-type PagesFields_url {
-  create: PagesFields_url_Create
-  read: PagesFields_url_Read
-  update: PagesFields_url_Update
-  delete: PagesFields_url_Delete
+type PagesFields_path {
+  create: PagesFields_path_Create
+  read: PagesFields_path_Read
+  update: PagesFields_path_Update
+  delete: PagesFields_path_Delete
 }
 
-type PagesFields_url_Create {
+type PagesFields_path_Create {
   permission: Boolean!
 }
 
-type PagesFields_url_Read {
+type PagesFields_path_Read {
   permission: Boolean!
 }
 
-type PagesFields_url_Update {
+type PagesFields_path_Update {
   permission: Boolean!
 }
 
-type PagesFields_url_Delete {
+type PagesFields_path_Delete {
   permission: Boolean!
 }
 
@@ -6201,6 +6230,7 @@ type MainMenuFields_navItems_link_Fields {
   reference: MainMenuFields_navItems_link_reference
   url: MainMenuFields_navItems_link_url
   label: MainMenuFields_navItems_link_label
+  appearance: MainMenuFields_navItems_link_appearance
 }
 
 type MainMenuFields_navItems_link_type {
@@ -6315,6 +6345,29 @@ type MainMenuFields_navItems_link_label_Update {
 }
 
 type MainMenuFields_navItems_link_label_Delete {
+  permission: Boolean!
+}
+
+type MainMenuFields_navItems_link_appearance {
+  create: MainMenuFields_navItems_link_appearance_Create
+  read: MainMenuFields_navItems_link_appearance_Read
+  update: MainMenuFields_navItems_link_appearance_Update
+  delete: MainMenuFields_navItems_link_appearance_Delete
+}
+
+type MainMenuFields_navItems_link_appearance_Create {
+  permission: Boolean!
+}
+
+type MainMenuFields_navItems_link_appearance_Read {
+  permission: Boolean!
+}
+
+type MainMenuFields_navItems_link_appearance_Update {
+  permission: Boolean!
+}
+
+type MainMenuFields_navItems_link_appearance_Delete {
   permission: Boolean!
 }
 
@@ -6440,7 +6493,7 @@ type Mutation {
 input mutationPageInput {
   title: String!
   slug: String
-  url: String
+  path: String
   layout: JSON
   meta: mutationPage_MetaInput
   updatedAt: String
@@ -6462,7 +6515,7 @@ enum Page__status_MutationInput {
 input mutationPageUpdateInput {
   title: String
   slug: String
-  url: String
+  path: String
   layout: JSON
   meta: mutationPageUpdate_MetaInput
   updatedAt: String
@@ -6773,7 +6826,7 @@ input mutationMainMenuInput {
 }
 
 input mutationMainMenu_NavItemsInput {
-  link: mutationMainMenu_NavItems_LinkInput
+  link: mutationMainMenu_NavItems_LinkInput!
   id: String
 }
 
@@ -6783,6 +6836,7 @@ input mutationMainMenu_NavItems_LinkInput {
   reference: MainMenu_NavItems_Link_ReferenceRelationshipInput
   url: String
   label: String!
+  appearance: MainMenu_NavItems_Link_appearance_MutationInput!
 }
 
 input MainMenu_NavItems_Link_ReferenceRelationshipInput {
@@ -6792,4 +6846,8 @@ input MainMenu_NavItems_Link_ReferenceRelationshipInput {
 
 enum MainMenu_NavItems_Link_ReferenceRelationshipInputRelationTo {
   pages
+}
+
+enum MainMenu_NavItems_Link_appearance_MutationInput {
+  button
 }

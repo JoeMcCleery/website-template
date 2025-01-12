@@ -7,5 +7,9 @@ defineProps({
   to: String,
   href: String,
   target: String,
+  appearance: {
+    type: String,
+    default: 'default',
+  },
 })
 </script>
