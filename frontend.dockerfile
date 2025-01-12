@@ -2,12 +2,13 @@ FROM node:lts-alpine
 
 WORKDIR /app
 
-COPY package.json package.json
-COPY yarn.lock yarn.lock
+COPY ./frontend/package.json ./frontend/yarn.lock ./
 
 RUN yarn install
 
-COPY . .
+COPY ./common ../common
+
+COPY ./frontend .
 
 RUN yarn install
 
