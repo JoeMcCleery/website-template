@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   srcDir: 'src/',
   runtimeConfig: {
+    apiUrl: '',
     public: {
       apiUrl: '',
     },

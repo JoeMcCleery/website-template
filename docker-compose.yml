@@ -110,6 +110,7 @@ services:
     container_name: ${PROJECT_PREFIX}_frontend
     environment:
       CHOKIDAR_USEPOLLING: ${CHOKIDAR_USEPOLLING}
+      NUXT_API_URL: http://backend:3000/api
       NUXT_PUBLIC_API_URL: https://cms.${DOMAIN_APP}/api
     volumes:
       - ./frontend:/app
