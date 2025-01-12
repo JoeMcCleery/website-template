@@ -3,7 +3,13 @@
   "trailingComma": "all",
   "printWidth": 100,
   "semi": false,
-  "importOrder": ["^@payloadcms/(.*)$", "^@/(.*)$", "^[./]"],
+  "importOrder": [
+    "^@common/(.*)$",
+    "^@payloadcms/(.*)$",
+    "^@payload-config/(.*)$",
+    "^@/(.*)$",
+    "^[./]"
+  ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "plugins": ["@trivago/prettier-plugin-sort-imports"]

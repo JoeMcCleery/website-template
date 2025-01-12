@@ -83,10 +83,10 @@ export default buildConfig({
       }),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
+    outputFile: path.resolve(dirname, '../../common/payload-types.ts'),
   },
   graphQL: {
-    schemaOutputFile: path.resolve(dirname, 'generated-schema.graphql'),
+    schemaOutputFile: path.resolve(dirname, '../../common/schema.graphql'),
   },
   db: postgresAdapter({
     pool: {
@@ -132,3 +132,5 @@ export default buildConfig({
     }),
   ],
 })
+
+const test: Form = {}
