@@ -1,8 +1,11 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig, FieldHook } from 'payload'
 
 import { publishedOnly } from '@/access/publishedOnly'
 import { FormBlock } from '@/blocks/Form'
 import { slugField } from '@/fields/slug'
+import { getUrl } from '@/utilities/getUrl'
+
+const urlHook: FieldHook = ({ data, originalDoc }) => getUrl(data?.slug || originalDoc?.slug)
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -33,10 +36,7 @@ export const Pages: CollectionConfig = {
                 readOnly: true,
               },
               hooks: {
-                afterRead: [
-                  ({ data }) =>
-                    `https://${process.env.DOMAIN_APP || 'localhost' + (data?.slug ? `/${data?.slug}` : '')}`,
-                ],
+                afterRead: [urlHook],
               },
             },
           ],

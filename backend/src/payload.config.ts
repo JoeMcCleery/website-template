@@ -24,6 +24,7 @@ import { Users } from '@/collections/Users'
 import { MainMenu } from '@/globals/MainMenu'
 import { Meta } from '@/globals/Meta'
 import { getMeta } from '@/utilities/getGlobals'
+import { getUrl } from '@/utilities/getUrl'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -37,7 +38,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     livePreview: {
-      url: ({ data }) => data.url,
+      url: ({ data }) => data.url ?? getUrl(),
       collections: ['pages'],
       breakpoints: [
         {
@@ -124,8 +125,7 @@ export default buildConfig({
         }
         return title
       },
-      generateURL: ({ doc }) =>
-        doc.url ?? `https://${process.env.DOMAIN_APP || 'https://localhost'}`,
+      generateURL: ({ doc }) => doc.url ?? getUrl(),
     }),
   ],
 })
