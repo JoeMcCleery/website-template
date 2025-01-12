@@ -310,6 +310,9 @@ export interface Media {
  */
 export interface User {
   id: number;
+  firstName: string;
+  secondName: string;
+  fullName?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -444,6 +447,9 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  firstName?: T;
+  secondName?: T;
+  fullName?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

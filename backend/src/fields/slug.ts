@@ -18,9 +18,6 @@ export const slugField: Slug = (overrides = {}) =>
     {
       name: 'slug',
       type: 'text',
-      admin: {
-        position: 'sidebar',
-      },
       hooks: {
         beforeValidate: [beforeValidateHook],
       },
