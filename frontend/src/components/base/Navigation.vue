@@ -15,7 +15,7 @@ const navItems = computed(() => {
       props: {
         key: item.id,
         href: link.type === 'custom' ? link.url : undefined,
-        to: link.type === 'reference' ? link.reference.value.path : undefined,
+        to: link.type === 'reference' ? link.reference?.value.path : undefined,
         target: link.newTab ? '_blank' : undefined,
       },
     }

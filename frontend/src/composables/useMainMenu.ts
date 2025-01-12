@@ -11,7 +11,7 @@ type MainMenuResult = {
           value: {
             path: string
           }
-        }
+        } | null
       }
     }[]
   }
