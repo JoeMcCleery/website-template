@@ -14,7 +14,7 @@ export const Pages: CollectionConfig = {
     read: publishedOnly,
   },
   admin: {
-    defaultColumns: ['title', 'slug', '_status'],
+    defaultColumns: ['title', 'path', '_status'],
     useAsTitle: 'title',
   },
   fields: [
