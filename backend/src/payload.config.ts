@@ -21,6 +21,7 @@ import { s3Storage } from '@payloadcms/storage-s3'
 import { Media } from '@/collections/Media'
 import { Pages } from '@/collections/Pages'
 import { Users } from '@/collections/Users'
+import { Footer } from '@/globals/Footer'
 import { MainMenu } from '@/globals/MainMenu'
 import { Meta } from '@/globals/Meta'
 import { getMeta } from '@/utilities/getGlobals'
@@ -53,7 +54,7 @@ export default buildConfig({
       ],
     },
   },
-  globals: [Meta, MainMenu],
+  globals: [Meta, MainMenu, Footer],
   collections: [Pages, Users, Media],
   editor: lexicalEditor({
     features: () => {
