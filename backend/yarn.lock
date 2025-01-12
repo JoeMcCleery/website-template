@@ -1807,7 +1807,7 @@
   dependencies:
     nodemailer "6.9.10"
 
-"@payloadcms/graphql@3.16.0":
+"@payloadcms/graphql@3.16.0", "@payloadcms/graphql@^3.16.0":
   version "3.16.0"
   resolved "https://registry.yarnpkg.com/@payloadcms/graphql/-/graphql-3.16.0.tgz#79770a7fc9e0b87ff82eb313255d80b688795fdb"
   integrity sha512-uqEJ94ASo8EfS5wj/PFwmi7mZKJwLRg7IgozxGdSIylJ9EFLLLjAqeAuHELLCv7xIKtGke6sGjP2SI3eTrRaYQ==
