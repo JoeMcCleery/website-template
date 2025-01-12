@@ -4,9 +4,9 @@ import { publishedOnly } from '@/access/publishedOnly'
 import { FormBlock } from '@/blocks/Form'
 import { slugField } from '@/fields/slug'
 import { virtualField } from '@/fields/virtual'
-import { getAppURL } from '@/utilities/getURL'
+import { getPath } from '@/utilities/getURL'
 
-const urlHook: FieldHook = ({ data, originalDoc }) => getAppURL(data?.slug || originalDoc?.slug)
+const pathHook: FieldHook = ({ data, originalDoc }) => getPath(data?.slug || originalDoc?.slug)
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -29,7 +29,7 @@ export const Pages: CollectionConfig = {
               required: true,
             },
             slugField(),
-            virtualField('url', urlHook),
+            virtualField('path', pathHook),
           ],
           label: 'Meta',
         },

@@ -9,4 +9,13 @@ export default defineNuxtConfig({
       apiUrl: '',
     },
   },
+  modules: ['@nuxtjs/apollo'],
+  apollo: {
+    clients: {
+      default: {
+        httpEndpoint: `${process.env.NUXT_API_URL}/graphql`,
+        browserHttpEndpoint: `${process.env.NUXT_PUBLIC_API_URL}/graphql`,
+      },
+    },
+  },
 })

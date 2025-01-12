@@ -77,7 +77,7 @@ export interface Page {
   id: number;
   title: string;
   slug?: string | null;
-  url?: string | null;
+  path?: string | null;
   layout: {
     form: number | Form;
     enableIntro?: boolean | null;
@@ -418,7 +418,7 @@ export interface PayloadMigration {
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
-  url?: T;
+  path?: T;
   layout?:
     | T
     | {
