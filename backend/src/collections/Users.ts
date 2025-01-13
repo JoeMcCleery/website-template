@@ -27,7 +27,7 @@ export const Users: CollectionConfig = {
       type: 'text',
       required: true,
     },
-    virtualField('fullName', fullNameHook, { admin: { hidden: true } }),
+    virtualField({ name: 'fullName', hook: fullNameHook, overrides: { admin: { hidden: true } } }),
     {
       name: 'avatar',
       type: 'upload',

@@ -2,6 +2,11 @@ import { Field, Option, deepMerge } from 'payload'
 
 import { iconField } from '@/fields/icon'
 
+type LinkFieldFactory = (options?: {
+  appearances?: false | LinkAppearance[]
+  overrides?: Partial<Field>
+}) => Field
+
 export type LinkAppearance = 'default' | 'button'
 
 export const appearanceOptions: Record<LinkAppearance, Option> = {
@@ -15,13 +20,8 @@ export const appearanceOptions: Record<LinkAppearance, Option> = {
   },
 }
 
-type LinkFieldFactory = (options?: {
-  appearances?: false | LinkAppearance[]
-  overrides?: Partial<Field>
-}) => Field
-
 export const linkField: LinkFieldFactory = ({ appearances, overrides = {} } = {}) => {
-  const appearanceFields: Field[] = [iconField(true)]
+  const appearanceFields: Field[] = [iconField({ allowNone: true })]
 
   if (appearances !== false) {
     let appearanceOptionsToUse = Object.values(appearanceOptions)

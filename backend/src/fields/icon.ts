@@ -1,10 +1,10 @@
 import { Field, Option, OptionObject, deepMerge } from 'payload'
 
-type IconFieldFactory = (
-  allowNone?: boolean,
-  positions?: false | IconPosition[],
-  overrides?: Partial<Field>,
-) => Field
+type IconFieldFactory = (options?: {
+  allowNone?: boolean
+  positions?: false | IconPosition[]
+  overrides?: Partial<Field>
+}) => Field
 
 type IconType = 'none' | 'icon' | 'media'
 
@@ -47,7 +47,11 @@ const iconOptions: Option[] = [
   },
 ]
 
-export const iconField: IconFieldFactory = (allowNone = false, positions, overrides = {}) => {
+export const iconField: IconFieldFactory = ({
+  allowNone = false,
+  positions,
+  overrides = {},
+} = {}) => {
   let typeOptionsToUse = Object.values(typeOptions)
 
   if (!allowNone) {

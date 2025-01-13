@@ -29,7 +29,7 @@ export const Pages: CollectionConfig = {
               required: true,
             },
             slugField(),
-            virtualField('path', pathHook),
+            virtualField({ name: 'path', hook: pathHook }),
           ],
           label: 'Meta',
         },
