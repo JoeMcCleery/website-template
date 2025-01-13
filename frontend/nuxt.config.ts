@@ -18,4 +18,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  tailwindcss: {
+    editorSupport: {
+      autocompleteUtil: true,
+    },
+  },
 })

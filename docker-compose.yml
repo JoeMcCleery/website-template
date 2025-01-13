@@ -119,6 +119,7 @@ services:
       - ./frontend:/app
       - ./common:/common
       - frontend_node_modules:/app/node_modules
+      - frontend_nuxt_output:/app/.nuxt
     tmpfs: /tmp
     restart: unless-stopped
     labels:
@@ -132,6 +133,7 @@ volumes:
   pgadmin:
   backend_node_modules:
   frontend_node_modules:
+  frontend_nuxt_output:
 
 configs:
   pgpass:
