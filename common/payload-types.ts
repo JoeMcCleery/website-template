@@ -693,7 +693,7 @@ export interface MainMenu {
   id: number;
   navItems?:
     | {
-        link: {
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?: {
@@ -701,7 +701,13 @@ export interface MainMenu {
             value: number | Page;
           } | null;
           url?: string | null;
-          label: string;
+          label?: string | null;
+          icon?: {
+            type?: ('none' | 'icon' | 'media') | null;
+            icon?: ('hello' | 'world') | null;
+            media?: (number | null) | Media;
+            position?: ('before' | 'after') | null;
+          };
         };
         id?: string | null;
       }[]
@@ -717,7 +723,7 @@ export interface Footer {
   id: number;
   links?:
     | {
-        link: {
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?: {
@@ -725,7 +731,13 @@ export interface Footer {
             value: number | Page;
           } | null;
           url?: string | null;
-          label: string;
+          label?: string | null;
+          icon?: {
+            type?: ('none' | 'icon' | 'media') | null;
+            icon?: ('hello' | 'world') | null;
+            media?: (number | null) | Media;
+            position?: ('before' | 'after') | null;
+          };
         };
         id?: string | null;
       }[]
@@ -768,6 +780,14 @@ export interface MainMenuSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+              icon?:
+                | T
+                | {
+                    type?: T;
+                    icon?: T;
+                    media?: T;
+                    position?: T;
+                  };
             };
         id?: T;
       };
@@ -791,6 +811,14 @@ export interface FooterSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+              icon?:
+                | T
+                | {
+                    type?: T;
+                    icon?: T;
+                    media?: T;
+                    position?: T;
+                  };
             };
         id?: T;
       };

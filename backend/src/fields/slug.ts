@@ -1,6 +1,5 @@
-import type { Field, FieldHook } from 'payload'
+import { Field, FieldHook, deepMerge } from 'payload'
 
-import deepMerge from '@/utilities/deepMerge'
 import { toSlug } from '@/utilities/toSlug'
 
 type SlugFieldFactory = (overrides?: Partial<Field>) => Field
@@ -14,7 +13,7 @@ const beforeValidateHook: FieldHook = ({ value }) => {
 }
 
 export const slugField: SlugFieldFactory = (overrides = {}) =>
-  deepMerge<Field, Partial<Field>>(
+  deepMerge(
     {
       name: 'slug',
       type: 'text',

@@ -1,6 +1,6 @@
-import type { Field, Option } from 'payload'
+import { Field, Option, deepMerge } from 'payload'
 
-import deepMerge from '@/utilities/deepMerge'
+import { iconField } from '@/fields/icon'
 
 export type LinkAppearance = 'default' | 'button'
 
@@ -17,15 +17,30 @@ export const appearanceOptions: Record<LinkAppearance, Option> = {
 
 type LinkFieldFactory = (options?: {
   appearances?: false | LinkAppearance[]
-  disableLabel?: boolean
-  overrides?: Record<string, unknown>
+  overrides?: Partial<Field>
 }) => Field
 
-export const linkField: LinkFieldFactory = ({
-  appearances,
-  disableLabel = false,
-  overrides = {},
-} = {}) => {
+export const linkField: LinkFieldFactory = ({ appearances, overrides = {} } = {}) => {
+  const appearanceFields: Field[] = [iconField(true)]
+
+  if (appearances !== false) {
+    let appearanceOptionsToUse = Object.values(appearanceOptions)
+
+    if (appearances) {
+      appearanceOptionsToUse = appearances.map((appearance) => appearanceOptions[appearance])
+    }
+
+    appearanceFields.push({
+      name: 'appearance',
+      type: 'select',
+      admin: {
+        description: 'Choose how the link should be rendered.',
+      },
+      defaultValue: 'default',
+      options: appearanceOptionsToUse,
+    })
+  }
+
   const linkResult: Field = {
     name: 'link',
     type: 'group',
@@ -68,71 +83,50 @@ export const linkField: LinkFieldFactory = ({
           },
         ],
       },
-    ],
-  }
-
-  const linkTypes: Field[] = [
-    {
-      name: 'reference',
-      type: 'relationship',
-      admin: {
-        condition: (_, siblingData) => siblingData?.type === 'reference',
-      },
-      label: 'Page',
-      maxDepth: 1,
-      relationTo: ['pages'],
-      required: true,
-    },
-    {
-      name: 'url',
-      type: 'text',
-      admin: {
-        condition: (_, siblingData) => siblingData?.type === 'custom',
-      },
-      label: 'Custom URL',
-      required: true,
-    },
-  ]
-
-  if (!disableLabel) {
-    linkTypes[0].admin!.width = '50%'
-    linkTypes[1].admin!.width = '50%'
-
-    linkResult.fields.push({
-      type: 'row',
-      fields: [
-        ...linkTypes,
-        {
-          name: 'label',
-          type: 'text',
-          admin: {
-            width: '50%',
+      {
+        type: 'row',
+        fields: [
+          {
+            name: 'reference',
+            type: 'relationship',
+            admin: {
+              condition: (_, siblingData) => siblingData?.type === 'reference',
+              width: '50%',
+            },
+            label: 'Page',
+            maxDepth: 1,
+            relationTo: ['pages'],
+            required: true,
           },
-          label: 'Label',
-          required: true,
-        },
-      ],
-    })
-  } else {
-    linkResult.fields = [...linkResult.fields, ...linkTypes]
-  }
-
-  if (appearances !== false) {
-    let appearanceOptionsToUse = Object.values(appearanceOptions)
-
-    if (appearances) {
-      appearanceOptionsToUse = appearances.map((appearance) => appearanceOptions[appearance])
-    }
-
-    linkResult.fields.push({
-      name: 'appearance',
-      type: 'select',
-      admin: {
-        description: 'Choose how the link should be rendered.',
+          {
+            name: 'url',
+            type: 'text',
+            admin: {
+              condition: (_, siblingData) => siblingData?.type === 'custom',
+              width: '50%',
+            },
+            label: 'Custom URL',
+            required: true,
+          },
+          {
+            name: 'label',
+            type: 'text',
+            admin: {
+              width: '50%',
+            },
+            label: 'Label',
+          },
+        ],
       },
-      defaultValue: 'default',
-      options: appearanceOptionsToUse,
-    })
+      {
+        type: 'collapsible',
+        label: 'Appearance',
+        admin: {
+          initCollapsed: true,
+        },
+        fields: appearanceFields,
+      },
+    ],
   }
 
   return deepMerge(linkResult, overrides)

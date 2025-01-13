@@ -1,11 +1,9 @@
-import { Field, FieldHook } from 'payload'
-
-import deepMerge from '@/utilities/deepMerge'
+import { Field, FieldHook, deepMerge } from 'payload'
 
 type VirtualFieldFactory = (name: string, hook: FieldHook, overrides?: Partial<Field>) => Field
 
 export const virtualField: VirtualFieldFactory = (name, hook, overrides = {}) =>
-  deepMerge<Field, Partial<Field>>(
+  deepMerge(
     {
       name,
       type: 'text',
