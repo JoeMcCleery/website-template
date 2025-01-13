@@ -25,7 +25,7 @@ const typeOptions: Record<IconType, Option> = {
   },
 }
 
-const positionOptions: Record<IconPosition, Option> = {
+const positionOptions: Record<IconPosition, OptionObject> = {
   before: {
     label: 'Before',
     value: 'before',
@@ -78,7 +78,6 @@ export const iconField: IconFieldFactory = ({
         name: 'icon',
         type: 'select',
         admin: { condition: (_, siblingData) => siblingData?.type === 'icon' },
-        required: true,
         options: iconOptions,
       },
       {
@@ -87,7 +86,6 @@ export const iconField: IconFieldFactory = ({
         admin: {
           condition: (_, siblingData) => siblingData?.type === 'media',
         },
-        required: true,
         relationTo: 'media',
       },
     ],
@@ -107,7 +105,7 @@ export const iconField: IconFieldFactory = ({
         condition: (_, siblingData) => siblingData?.type !== 'none',
         layout: 'horizontal',
       },
-      required: true,
+      defaultValue: positionOptionsToUse[0].value,
       options: positionOptionsToUse,
     })
   }
