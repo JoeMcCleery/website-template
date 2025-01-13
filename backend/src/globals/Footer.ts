@@ -1,6 +1,6 @@
 import type { GlobalConfig } from 'payload'
 
-import link from '@/fields/link'
+import { linkField } from '@/fields/link'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
@@ -11,7 +11,7 @@ export const Footer: GlobalConfig = {
     {
       name: 'links',
       type: 'array',
-      fields: [link({ appearances: false })],
+      fields: [linkField({ appearances: false })],
       maxRows: 6,
     },
   ],

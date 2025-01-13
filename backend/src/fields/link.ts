@@ -15,13 +15,17 @@ export const appearanceOptions: Record<LinkAppearance, Option> = {
   },
 }
 
-type LinkType = (options?: {
+type LinkFieldFactory = (options?: {
   appearances?: false | LinkAppearance[]
   disableLabel?: boolean
   overrides?: Record<string, unknown>
 }) => Field
 
-const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = {}) => {
+export const linkField: LinkFieldFactory = ({
+  appearances,
+  disableLabel = false,
+  overrides = {},
+} = {}) => {
   const linkResult: Field = {
     name: 'link',
     type: 'group',
@@ -74,7 +78,7 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
       admin: {
         condition: (_, siblingData) => siblingData?.type === 'reference',
       },
-      label: 'Document to link to',
+      label: 'Page',
       maxDepth: 1,
       relationTo: ['pages'],
       required: true,
@@ -133,5 +137,3 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
 
   return deepMerge(linkResult, overrides)
 }
-
-export default link

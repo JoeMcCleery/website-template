@@ -1,6 +1,6 @@
 import type { GlobalConfig } from 'payload'
 
-import link from '@/fields/link'
+import { linkField } from '@/fields/link'
 
 export const MainMenu: GlobalConfig = {
   slug: 'main-menu',
@@ -11,7 +11,7 @@ export const MainMenu: GlobalConfig = {
     {
       name: 'navItems',
       type: 'array',
-      fields: [link({ appearances: false })],
+      fields: [linkField({ appearances: false })],
       maxRows: 6,
     },
   ],

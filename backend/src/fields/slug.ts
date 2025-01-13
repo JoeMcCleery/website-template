@@ -3,7 +3,7 @@ import type { Field, FieldHook } from 'payload'
 import deepMerge from '@/utilities/deepMerge'
 import { toSlug } from '@/utilities/toSlug'
 
-type Slug = (overrides?: Partial<Field>) => Field
+type SlugFieldFactory = (overrides?: Partial<Field>) => Field
 
 const beforeValidateHook: FieldHook = ({ value }) => {
   if (typeof value === 'string') {
@@ -13,7 +13,7 @@ const beforeValidateHook: FieldHook = ({ value }) => {
   return value
 }
 
-export const slugField: Slug = (overrides = {}) =>
+export const slugField: SlugFieldFactory = (overrides = {}) =>
   deepMerge<Field, Partial<Field>>(
     {
       name: 'slug',
