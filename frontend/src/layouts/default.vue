@@ -1,9 +1,9 @@
 <template>
-  <BaseHeader />
-
-  <main>
-    <slot />
-  </main>
-
-  <BaseFooter />
+  <div class="grid min-h-screen grid-rows-[auto_1fr_auto]">
+    <BaseHeader />
+    <main>
+      <slot />
+    </main>
+    <BaseFooter />
+  </div>
 </template>
