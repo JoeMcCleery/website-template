@@ -53,6 +53,12 @@ export default buildConfig({
         },
       ],
     },
+    components: {
+      graphics: {
+        Logo: '/components/graphics/Logo.tsx',
+        Icon: '/components/graphics/Icon.tsx',
+      },
+    },
   },
   globals: [Meta, MainMenu, Footer],
   collections: [Pages, Users, Media],
