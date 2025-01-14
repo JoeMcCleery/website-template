@@ -1,0 +1,18 @@
+.material-symbols-rounded {
+  transition: font-variation-settings ease 200ms;
+  font-variation-settings: 'FILL' 0;
+
+  &.fill {
+    font-variation-settings: 'FILL' 1;
+  }
+}
+
+.icon-fill-hover:hover {
+  .material-symbols-rounded {
+    font-variation-settings: 'FILL' 1;
+
+    &.fill {
+      font-variation-settings: 'FILL' 0;
+    }
+  }
+}
