@@ -704,7 +704,7 @@ export interface MainMenu {
           label?: string | null;
           icon?: {
             type?: ('none' | 'icon' | 'media') | null;
-            icon?: ('hello' | 'world') | null;
+            name?: ('home' | 'menu_book') | null;
             media?: (number | null) | Media;
             position?: ('before' | 'after') | null;
           };
@@ -734,7 +734,7 @@ export interface Footer {
           label?: string | null;
           icon?: {
             type?: ('none' | 'icon' | 'media') | null;
-            icon?: ('hello' | 'world') | null;
+            name?: ('home' | 'menu_book') | null;
             media?: (number | null) | Media;
             position?: ('before' | 'after') | null;
           };
@@ -784,7 +784,7 @@ export interface MainMenuSelect<T extends boolean = true> {
                 | T
                 | {
                     type?: T;
-                    icon?: T;
+                    name?: T;
                     media?: T;
                     position?: T;
                   };
@@ -815,7 +815,7 @@ export interface FooterSelect<T extends boolean = true> {
                 | T
                 | {
                     type?: T;
-                    icon?: T;
+                    name?: T;
                     media?: T;
                     position?: T;
                   };

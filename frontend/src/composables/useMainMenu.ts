@@ -1,21 +1,4 @@
-type MainMenuResult = {
-  MainMenu: {
-    navItems: {
-      id: string
-      link: {
-        type: string
-        label: string
-        newTab: boolean
-        url: string
-        reference: {
-          value: {
-            path: string
-          }
-        } | null
-      }
-    }[]
-  }
-}
+import type { MainMenu } from '@common/payload-types'
 
 export const useMainMenu = () => {
   const query = gql`
@@ -25,9 +8,9 @@ export const useMainMenu = () => {
           id
           link {
             type
-            label
             newTab
             url
+            label
             reference {
               value {
                 ... on Page {
@@ -35,10 +18,19 @@ export const useMainMenu = () => {
                 }
               }
             }
+            icon {
+              type
+              icon
+              media {
+                url
+                alt
+              }
+              position
+            }
           }
         }
       }
     }
   `
-  return useAsyncQuery<MainMenuResult>(query)
+  return useAsyncQuery<{ MainMenu: MainMenu }>(query)
 }

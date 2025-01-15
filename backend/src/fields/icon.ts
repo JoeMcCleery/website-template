@@ -10,7 +10,7 @@ type IconType = 'none' | 'icon' | 'media'
 
 type IconPosition = 'before' | 'after'
 
-const typeOptions: Record<IconType, Option> = {
+const typeOptions: Record<IconType, OptionObject> = {
   none: {
     label: 'None',
     value: 'none',
@@ -36,14 +36,14 @@ const positionOptions: Record<IconPosition, OptionObject> = {
   },
 }
 
-const iconOptions: Option[] = [
+const nameOptions: OptionObject[] = [
   {
-    label: 'Hello',
-    value: 'hello',
+    label: 'Home',
+    value: 'home',
   },
   {
-    label: 'World',
-    value: 'world',
+    label: 'Book',
+    value: 'menu_book',
   },
 ]
 
@@ -71,14 +71,15 @@ export const iconField: IconFieldFactory = ({
         name: 'type',
         type: 'radio',
         admin: { layout: 'horizontal' },
-        defaultValue: () => (allowNone ? 'none' : 'icon'),
+        defaultValue: typeOptionsToUse[0].value,
         options: typeOptionsToUse,
       },
       {
-        name: 'icon',
+        name: 'name',
         type: 'select',
         admin: { condition: (_, siblingData) => siblingData?.type === 'icon' },
-        options: iconOptions,
+        defaultValue: nameOptions[0].value,
+        options: nameOptions,
       },
       {
         name: 'media',
