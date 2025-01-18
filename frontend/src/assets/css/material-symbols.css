@@ -8,6 +8,9 @@
 }
 
 .icon-filled-hover:hover {
+  cursor: pointer;
+
+  &.material-symbols-rounded,
   .material-symbols-rounded {
     font-variation-settings: 'FILL' 1;
 
