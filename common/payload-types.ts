@@ -704,7 +704,10 @@ export interface MainMenu {
           label?: string | null;
           icon?: {
             type?: ('none' | 'icon' | 'media') | null;
-            name?: ('home' | 'menu_book') | null;
+            /**
+             * Material symbol icon name https://fonts.google.com/icons?icon.style=Rounded
+             */
+            name?: string | null;
             media?: (number | null) | Media;
             position?: ('before' | 'after') | null;
           };
@@ -734,7 +737,10 @@ export interface Footer {
           label?: string | null;
           icon?: {
             type?: ('none' | 'icon' | 'media') | null;
-            name?: ('home' | 'menu_book') | null;
+            /**
+             * Material symbol icon name https://fonts.google.com/icons?icon.style=Rounded
+             */
+            name?: string | null;
             media?: (number | null) | Media;
             position?: ('before' | 'after') | null;
           };

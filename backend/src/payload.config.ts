@@ -38,6 +38,9 @@ export default buildConfig({
   csrf: [appUrl],
   admin: {
     user: Users.slug,
+    avatar: {
+      Component: '/components/account/AccountAvatar.tsx',
+    },
     importMap: {
       baseDir: path.resolve(dirname),
     },

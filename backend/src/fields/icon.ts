@@ -1,4 +1,6 @@
-import { Field, Option, OptionObject, deepMerge } from 'payload'
+import { Field, FieldHook, OptionObject, deepMerge } from 'payload'
+
+import { toIconName } from '@/utilities/toIconName'
 
 type IconFieldFactory = (options?: {
   allowNone?: boolean
@@ -36,16 +38,13 @@ const positionOptions: Record<IconPosition, OptionObject> = {
   },
 }
 
-const nameOptions: OptionObject[] = [
-  {
-    label: 'Home',
-    value: 'home',
-  },
-  {
-    label: 'Book',
-    value: 'menu_book',
-  },
-]
+const beforeValidateIconNameHook: FieldHook = ({ value }) => {
+  if (typeof value === 'string') {
+    return toIconName(value)
+  }
+
+  return value
+}
 
 export const iconField: IconFieldFactory = ({
   allowNone = false,
@@ -76,10 +75,18 @@ export const iconField: IconFieldFactory = ({
       },
       {
         name: 'name',
-        type: 'select',
-        admin: { condition: (_, siblingData) => siblingData?.type === 'icon' },
-        defaultValue: nameOptions[0].value,
-        options: nameOptions,
+        type: 'text',
+        admin: {
+          description:
+            'Material symbol icon name https://fonts.google.com/icons?icon.style=Rounded',
+          condition: (_, siblingData) => siblingData?.type === 'icon',
+          components: {
+            beforeInput: ['/components/fields/IconPreview.tsx'],
+          },
+        },
+        hooks: {
+          beforeValidate: [beforeValidateIconNameHook],
+        },
       },
       {
         name: 'media',

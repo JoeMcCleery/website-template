@@ -12,7 +12,7 @@ export const Users: CollectionConfig = {
   slug: 'users',
   admin: {
     useAsTitle: 'fullName',
-    defaultColumns: ['fullName', 'email'],
+    defaultColumns: ['fullName', 'email', 'avatar'],
   },
   auth: true,
   fields: [
@@ -32,6 +32,11 @@ export const Users: CollectionConfig = {
       name: 'avatar',
       type: 'upload',
       relationTo: 'media',
+      admin: {
+        components: {
+          Cell: '/components/cells/AvatarCell.tsx',
+        },
+      },
     },
   ],
 }
