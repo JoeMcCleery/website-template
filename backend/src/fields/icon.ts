@@ -74,11 +74,17 @@ export const iconField: IconFieldFactory = ({
         options: typeOptionsToUse,
       },
       {
+        name: 'filled',
+        type: 'checkbox',
+        admin: {
+          condition: (_, siblingData) => siblingData?.type === 'icon',
+        },
+      },
+      {
         name: 'name',
         type: 'text',
         admin: {
-          description:
-            'Material symbol icon name https://fonts.google.com/icons?icon.style=Rounded',
+          description: 'Material symbol icon name',
           condition: (_, siblingData) => siblingData?.type === 'icon',
           components: {
             beforeInput: ['/components/fields/IconPreview.tsx'],

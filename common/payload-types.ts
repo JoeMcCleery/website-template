@@ -704,8 +704,9 @@ export interface MainMenu {
           label?: string | null;
           icon?: {
             type?: ('none' | 'icon' | 'media') | null;
+            filled?: boolean | null;
             /**
-             * Material symbol icon name https://fonts.google.com/icons?icon.style=Rounded
+             * Material symbol icon name
              */
             name?: string | null;
             media?: (number | null) | Media;
@@ -737,8 +738,9 @@ export interface Footer {
           label?: string | null;
           icon?: {
             type?: ('none' | 'icon' | 'media') | null;
+            filled?: boolean | null;
             /**
-             * Material symbol icon name https://fonts.google.com/icons?icon.style=Rounded
+             * Material symbol icon name
              */
             name?: string | null;
             media?: (number | null) | Media;
@@ -790,6 +792,7 @@ export interface MainMenuSelect<T extends boolean = true> {
                 | T
                 | {
                     type?: T;
+                    filled?: T;
                     name?: T;
                     media?: T;
                     position?: T;
@@ -821,6 +824,7 @@ export interface FooterSelect<T extends boolean = true> {
                 | T
                 | {
                     type?: T;
+                    filled?: T;
                     name?: T;
                     media?: T;
                     position?: T;

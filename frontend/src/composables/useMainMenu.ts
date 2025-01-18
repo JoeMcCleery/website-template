@@ -20,7 +20,8 @@ export const useMainMenu = () => {
             }
             icon {
               type
-              icon
+              name
+              filled
               media {
                 url
                 alt

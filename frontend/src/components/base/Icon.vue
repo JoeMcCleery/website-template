@@ -1,12 +1,12 @@
 <template>
-  <span class="material-symbols-rounded" :class="{ fill }">
-    {{ icon }}
+  <span class="material-symbols-rounded" :class="{ filled }">
+    {{ name }}
   </span>
 </template>
 
 <script setup lang="ts">
 defineProps({
-  icon: String,
-  fill: Boolean,
+  name: String,
+  filled: Boolean,
 })
 </script>

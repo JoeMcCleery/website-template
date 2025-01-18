@@ -1,8 +1,8 @@
 <template>
-  <NuxtLink v-bind="linkProps" class="flex gap-0.5" :class="{ 'icon-fill-hover': iconIsIcon }">
-    <BaseIcon v-if="iconIsIcon && iconPos === 'before'" :icon="icon?.name" />
+  <NuxtLink v-bind="linkProps" class="flex gap-0.5" :class="{ 'icon-filled-hover': iconIsIcon }">
+    <BaseIcon v-if="iconIsIcon && iconPos === 'before'" :name="icon?.name" :filled="icon?.filled" />
     <slot />
-    <BaseIcon v-if="iconIsIcon && iconPos === 'after'" :icon="icon?.name" />
+    <BaseIcon v-if="iconIsIcon && iconPos === 'after'" :name="icon?.name" :filled="icon?.filled" />
   </NuxtLink>
 </template>
 
@@ -20,7 +20,6 @@ const linkProps = {
   target,
 }
 
-const iconType = icon?.type
-const iconIsIcon = iconType === 'icon'
+const iconIsIcon = icon?.type === 'icon'
 const iconPos = icon?.position
 </script>
