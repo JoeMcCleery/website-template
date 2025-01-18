@@ -2,7 +2,6 @@
 /* DO NOT MODIFY IT BECAUSE IT COULD BE REWRITTEN AT ANY TIME. */
 import config from '@payload-config'
 import type { Metadata } from 'next'
-import Head from 'next/head'
 
 import { RootPage, generatePageMetadata } from '@payloadcms/next/views'
 
