@@ -58,8 +58,8 @@ export default buildConfig({
     },
     components: {
       graphics: {
-        Logo: '/components/graphics/Logo.tsx',
-        Icon: '/components/graphics/Icon.tsx',
+        Icon: '/components/graphics/IconGraphic.tsx',
+        Logo: '/components/graphics/LogoGraphic.tsx',
       },
     },
   },
