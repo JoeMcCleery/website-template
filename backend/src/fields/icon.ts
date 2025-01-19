@@ -62,27 +62,34 @@ export const iconField: IconFieldFactory = ({
   const iconResult: Field = {
     name: 'icon',
     type: 'group',
-    interfaceName: 'Icon',
     admin: {
       hideGutter: true,
-      components: {
-        Field: '/components/fields/IconField.tsx',
-      },
     },
     fields: [
       {
         name: 'type',
         type: 'radio',
+        admin: { layout: 'horizontal' },
         defaultValue: typeOptionsToUse[0].value,
         options: typeOptionsToUse,
       },
       {
         name: 'filled',
         type: 'checkbox',
+        admin: {
+          condition: (_, siblingData) => siblingData?.type === 'icon',
+        },
       },
       {
         name: 'name',
         type: 'text',
+        admin: {
+          description: 'Material symbol icon name',
+          condition: (_, siblingData) => siblingData?.type === 'icon',
+          components: {
+            beforeInput: ['/components/fields/IconPreview.tsx'],
+          },
+        },
         hooks: {
           beforeValidate: [beforeValidateIconNameHook],
         },
@@ -90,6 +97,9 @@ export const iconField: IconFieldFactory = ({
       {
         name: 'media',
         type: 'upload',
+        admin: {
+          condition: (_, siblingData) => siblingData?.type === 'media',
+        },
         relationTo: 'media',
       },
     ],
@@ -105,6 +115,10 @@ export const iconField: IconFieldFactory = ({
     iconResult.fields.push({
       name: 'position',
       type: 'radio',
+      admin: {
+        condition: (_, siblingData) => siblingData?.type !== 'none',
+        layout: 'horizontal',
+      },
       defaultValue: positionOptionsToUse[0].value,
       options: positionOptionsToUse,
     })

@@ -702,24 +702,22 @@ export interface MainMenu {
           } | null;
           url?: string | null;
           label?: string | null;
-          icon?: Icon;
+          icon?: {
+            type?: ('none' | 'icon' | 'media') | null;
+            filled?: boolean | null;
+            /**
+             * Material symbol icon name
+             */
+            name?: string | null;
+            media?: (number | null) | Media;
+            position?: ('before' | 'after') | null;
+          };
         };
         id?: string | null;
       }[]
     | null;
   updatedAt?: string | null;
   createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Icon".
- */
-export interface Icon {
-  type?: ('none' | 'icon' | 'media') | null;
-  filled?: boolean | null;
-  name?: string | null;
-  media?: (number | null) | Media;
-  position?: ('before' | 'after') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -738,7 +736,16 @@ export interface Footer {
           } | null;
           url?: string | null;
           label?: string | null;
-          icon?: Icon;
+          icon?: {
+            type?: ('none' | 'icon' | 'media') | null;
+            filled?: boolean | null;
+            /**
+             * Material symbol icon name
+             */
+            name?: string | null;
+            media?: (number | null) | Media;
+            position?: ('before' | 'after') | null;
+          };
         };
         id?: string | null;
       }[]
@@ -781,24 +788,21 @@ export interface MainMenuSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
-              icon?: T | IconSelect<T>;
+              icon?:
+                | T
+                | {
+                    type?: T;
+                    filled?: T;
+                    name?: T;
+                    media?: T;
+                    position?: T;
+                  };
             };
         id?: T;
       };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Icon_select".
- */
-export interface IconSelect<T extends boolean = true> {
-  type?: T;
-  filled?: T;
-  name?: T;
-  media?: T;
-  position?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -816,7 +820,15 @@ export interface FooterSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
-              icon?: T | IconSelect<T>;
+              icon?:
+                | T
+                | {
+                    type?: T;
+                    filled?: T;
+                    name?: T;
+                    media?: T;
+                    position?: T;
+                  };
             };
         id?: T;
       };
