@@ -2,7 +2,7 @@ import { ServerComponentProps } from 'payload'
 
 import { User } from '@common/payload-types'
 
-import Avatar from '@/components/base/Avatar'
+import BaseAvatar from '@/components/base/BaseAvatar'
 
 export default async function AccountAvatar({ user, payload }: ServerComponentProps) {
   let avatar = user.avatar as User['avatar']
@@ -11,5 +11,5 @@ export default async function AccountAvatar({ user, payload }: ServerComponentPr
   }
   const avatarUrl = avatar?.url ?? undefined
 
-  return <Avatar avatarUrl={avatarUrl} fullName={user.fullName} />
+  return <BaseAvatar avatarUrl={avatarUrl} fullName={user.fullName} />
 }

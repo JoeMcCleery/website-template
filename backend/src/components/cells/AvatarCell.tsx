@@ -2,7 +2,7 @@ import { DefaultServerCellComponentProps } from 'payload'
 
 import { User } from '@common/payload-types'
 
-import Avatar from '@/components/base/Avatar'
+import BaseAvatar from '@/components/base/BaseAvatar'
 
 export default async function AvatarCell({ rowData, payload }: DefaultServerCellComponentProps) {
   let avatar = rowData.avatar as User['avatar']
@@ -11,5 +11,5 @@ export default async function AvatarCell({ rowData, payload }: DefaultServerCell
   }
   const avatarUrl = avatar?.url ?? undefined
 
-  return <Avatar avatarUrl={avatarUrl} fullName={rowData.fullName} />
+  return <BaseAvatar avatarUrl={avatarUrl} fullName={rowData.fullName} />
 }

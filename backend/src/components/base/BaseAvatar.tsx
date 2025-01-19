@@ -1,6 +1,12 @@
 import { getSeededColour } from '@/utilities/getSeededColour'
 
-export default function Avatar({ avatarUrl, fullName }: { avatarUrl?: string; fullName?: string }) {
+export default function BaseAvatar({
+  avatarUrl,
+  fullName,
+}: {
+  avatarUrl?: string
+  fullName?: string
+}) {
   const bg = getSeededColour(fullName ?? Math.random() * Math.PI)
   const initials = fullName
     ?.split(' ')

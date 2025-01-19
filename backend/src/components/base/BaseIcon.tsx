@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-export default function Icon({
+export default function BaseIcon({
   name,
   filled = false,
   size = '24px',
