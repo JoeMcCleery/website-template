@@ -8,6 +8,7 @@
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "generate": "yarn generate:importmap && yarn generate:types && yarn generate:schema",
     "generate:importmap": "cross-env NODE_ENV=development NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_ENV=development NODE_OPTIONS=--no-deprecation payload generate:types",
     "generate:schema": "cross-env NODE_ENV=development PAYLOAD_CONFIG_PATH=src/payload.config.ts payload-graphql generate:schema",
