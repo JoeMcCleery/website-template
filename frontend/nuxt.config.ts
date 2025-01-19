@@ -9,17 +9,7 @@ export default defineNuxtConfig({
       apiUrl: '',
     },
   },
-  app: {
-    head: {
-      link: [
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:FILL@0..1&display=block',
-        },
-      ],
-    },
-  },
-  css: ['~/assets/css/material-symbols.css'],
+  css: ['../../common/material-symbols.css'],
   modules: ['@nuxtjs/apollo', '@nuxtjs/tailwindcss'],
   apollo: {
     clients: {
