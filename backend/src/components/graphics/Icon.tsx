@@ -1,9 +1,9 @@
+import BaseIcon from '@/components/base/Icon'
+
 export default function Icon() {
   return (
-    <div style={{ width: '18px', height: '18px' }}>
-      <span className="material-symbols-rounded icon-filled-hover" style={{ fontSize: '18px' }}>
-        home
-      </span>
+    <div className="icon-filled-hover" style={{ width: '18px', height: '18px' }}>
+      <BaseIcon name="home" size="18px" />
     </div>
   )
 }
