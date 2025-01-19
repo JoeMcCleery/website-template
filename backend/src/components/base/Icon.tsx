@@ -1,11 +1,19 @@
 import clsx from 'clsx'
 
-export default function Icon({ name, filled }: { name?: string; filled?: boolean }) {
+export default function Icon({
+  name,
+  filled = false,
+  size = '24px',
+}: {
+  name?: string
+  filled?: boolean
+  size?: string
+}) {
   const classNames = clsx('material-symbols-rounded', { filled })
 
   return (
-    <span className="icon-filled-hover">
-      <span className={classNames}>{name}</span>
+    <span className={classNames} style={{ fontSize: size }}>
+      {name}
     </span>
   )
 }
