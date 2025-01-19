@@ -52,19 +52,17 @@ export const iconField: IconFieldFactory = ({
   overrides = {},
 } = {}) => {
   let typeOptionsToUse = Object.values(typeOptions)
+  let positionOptionsToUse = Object.values(positionOptions)
 
-  if (!allowNone) {
-    typeOptionsToUse = Object.entries(typeOptions)
-      .filter(([type, _]) => type !== 'none')
-      .map(([_, option]) => option)
-  }
-
-  const iconResult: Field = {
+  const iconFieldConfig: Field = {
     name: 'icon',
     type: 'group',
     interfaceName: 'Icon',
     admin: {
-      hideGutter: true,
+      custom: {
+        allowNone,
+        positions,
+      },
       components: {
         Field: '/components/fields/IconField.tsx',
       },
@@ -75,6 +73,12 @@ export const iconField: IconFieldFactory = ({
         type: 'radio',
         defaultValue: typeOptionsToUse[0].value,
         options: typeOptionsToUse,
+      },
+      {
+        name: 'position',
+        type: 'radio',
+        defaultValue: positionOptionsToUse[0].value,
+        options: positionOptionsToUse,
       },
       {
         name: 'filled',
@@ -95,20 +99,5 @@ export const iconField: IconFieldFactory = ({
     ],
   }
 
-  if (positions != false) {
-    let positionOptionsToUse = Object.values(positionOptions)
-
-    if (positions) {
-      positionOptionsToUse = positions.map((position) => positionOptions[position])
-    }
-
-    iconResult.fields.push({
-      name: 'position',
-      type: 'radio',
-      defaultValue: positionOptionsToUse[0].value,
-      options: positionOptionsToUse,
-    })
-  }
-
-  return deepMerge(iconResult, overrides)
+  return deepMerge(iconFieldConfig, overrides)
 }

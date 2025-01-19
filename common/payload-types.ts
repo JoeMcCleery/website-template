@@ -716,10 +716,10 @@ export interface MainMenu {
  */
 export interface Icon {
   type?: ('none' | 'icon' | 'media') | null;
+  position?: ('before' | 'after') | null;
   filled?: boolean | null;
   name?: string | null;
   media?: (number | null) | Media;
-  position?: ('before' | 'after') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -795,10 +795,10 @@ export interface MainMenuSelect<T extends boolean = true> {
  */
 export interface IconSelect<T extends boolean = true> {
   type?: T;
+  position?: T;
   filled?: T;
   name?: T;
   media?: T;
-  position?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
