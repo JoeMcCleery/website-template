@@ -1,8 +1,8 @@
 <template>
   <nav class="flex gap-2">
-    <BaseLink v-for="item in navItems" :key="item.id" v-bind="item.props">
+    <BaseInputLink v-for="item in navItems" :key="item.id" v-bind="item.props">
       {{ item.label }}
-    </BaseLink>
+    </BaseInputLink>
   </nav>
 </template>
 

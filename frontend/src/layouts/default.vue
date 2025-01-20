@@ -1,9 +1,9 @@
 <template>
   <div class="grid min-h-screen grid-rows-[auto_1fr_auto]">
-    <BaseHeader />
+    <BaseLayoutHeader />
     <main>
       <slot />
     </main>
-    <BaseFooter />
+    <BaseLayoutFooter />
   </div>
 </template>
