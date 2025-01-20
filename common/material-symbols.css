@@ -23,7 +23,7 @@
   -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 
-  transition: font-variation-settings ease 200ms;
+  transition: font-variation-settings cubic-bezier(0.4, 0, 0.2, 1) 150ms;
   font-variation-settings: "FILL" 0;
 }
 
