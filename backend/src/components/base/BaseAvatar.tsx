@@ -1,14 +1,18 @@
+import { Payload } from 'payload'
+
+import { User } from '@common/payload-types'
+
 import { getSeededColour } from '@/utilities/getSeededColour'
 
-export default function BaseAvatar({
-  avatarUrl,
-  fullName,
-}: {
-  avatarUrl?: string
-  fullName?: string
-}) {
-  const bg = getSeededColour(fullName ?? Math.random() * Math.PI)
-  const initials = fullName
+export default async function BaseAvatar({ user, payload }: { user: User; payload: Payload }) {
+  let avatar = user.avatar as User['avatar']
+  if (typeof avatar === 'number') {
+    avatar = await payload.findByID({ collection: 'media', id: avatar })
+  }
+  const avatarUrl = avatar?.url ?? undefined
+
+  const bg = getSeededColour(user.id)
+  const initials = user.fullName
     ?.split(' ')
     .map((name) => name[0])
     .join('')
