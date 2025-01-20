@@ -10,15 +10,7 @@ export default defineNuxtConfig({
     },
   },
   css: ['../../common/material-symbols.css'],
-  modules: ['@nuxtjs/apollo', '@nuxtjs/tailwindcss'],
-  apollo: {
-    clients: {
-      default: {
-        httpEndpoint: `${process.env.NUXT_API_URL}/graphql`,
-        browserHttpEndpoint: `${process.env.NUXT_PUBLIC_API_URL}/graphql`,
-      },
-    },
-  },
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
   tailwindcss: {
     editorSupport: {
       autocompleteUtil: true,

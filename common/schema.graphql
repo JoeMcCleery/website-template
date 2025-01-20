@@ -3813,6 +3813,7 @@ type Icon {
   type: Icon_type
   position: Icon_position
   filled: Boolean
+  size: Float
   name: String
   media: Media
 }
@@ -4045,6 +4046,7 @@ type MainMenuDocAccessFields_navItems_link_icon_Fields {
   type: MainMenuDocAccessFields_navItems_link_icon_type
   position: MainMenuDocAccessFields_navItems_link_icon_position
   filled: MainMenuDocAccessFields_navItems_link_icon_filled
+  size: MainMenuDocAccessFields_navItems_link_icon_size
   name: MainMenuDocAccessFields_navItems_link_icon_name
   media: MainMenuDocAccessFields_navItems_link_icon_media
 }
@@ -4115,6 +4117,29 @@ type MainMenuDocAccessFields_navItems_link_icon_filled_Update {
 }
 
 type MainMenuDocAccessFields_navItems_link_icon_filled_Delete {
+  permission: Boolean!
+}
+
+type MainMenuDocAccessFields_navItems_link_icon_size {
+  create: MainMenuDocAccessFields_navItems_link_icon_size_Create
+  read: MainMenuDocAccessFields_navItems_link_icon_size_Read
+  update: MainMenuDocAccessFields_navItems_link_icon_size_Update
+  delete: MainMenuDocAccessFields_navItems_link_icon_size_Delete
+}
+
+type MainMenuDocAccessFields_navItems_link_icon_size_Create {
+  permission: Boolean!
+}
+
+type MainMenuDocAccessFields_navItems_link_icon_size_Read {
+  permission: Boolean!
+}
+
+type MainMenuDocAccessFields_navItems_link_icon_size_Update {
+  permission: Boolean!
+}
+
+type MainMenuDocAccessFields_navItems_link_icon_size_Delete {
   permission: Boolean!
 }
 
@@ -4496,6 +4521,7 @@ type FooterDocAccessFields_links_link_icon_Fields {
   type: FooterDocAccessFields_links_link_icon_type
   position: FooterDocAccessFields_links_link_icon_position
   filled: FooterDocAccessFields_links_link_icon_filled
+  size: FooterDocAccessFields_links_link_icon_size
   name: FooterDocAccessFields_links_link_icon_name
   media: FooterDocAccessFields_links_link_icon_media
 }
@@ -4566,6 +4592,29 @@ type FooterDocAccessFields_links_link_icon_filled_Update {
 }
 
 type FooterDocAccessFields_links_link_icon_filled_Delete {
+  permission: Boolean!
+}
+
+type FooterDocAccessFields_links_link_icon_size {
+  create: FooterDocAccessFields_links_link_icon_size_Create
+  read: FooterDocAccessFields_links_link_icon_size_Read
+  update: FooterDocAccessFields_links_link_icon_size_Update
+  delete: FooterDocAccessFields_links_link_icon_size_Delete
+}
+
+type FooterDocAccessFields_links_link_icon_size_Create {
+  permission: Boolean!
+}
+
+type FooterDocAccessFields_links_link_icon_size_Read {
+  permission: Boolean!
+}
+
+type FooterDocAccessFields_links_link_icon_size_Update {
+  permission: Boolean!
+}
+
+type FooterDocAccessFields_links_link_icon_size_Delete {
   permission: Boolean!
 }
 
@@ -6969,6 +7018,7 @@ type MainMenuFields_navItems_link_icon_Fields {
   type: MainMenuFields_navItems_link_icon_type
   position: MainMenuFields_navItems_link_icon_position
   filled: MainMenuFields_navItems_link_icon_filled
+  size: MainMenuFields_navItems_link_icon_size
   name: MainMenuFields_navItems_link_icon_name
   media: MainMenuFields_navItems_link_icon_media
 }
@@ -7039,6 +7089,29 @@ type MainMenuFields_navItems_link_icon_filled_Update {
 }
 
 type MainMenuFields_navItems_link_icon_filled_Delete {
+  permission: Boolean!
+}
+
+type MainMenuFields_navItems_link_icon_size {
+  create: MainMenuFields_navItems_link_icon_size_Create
+  read: MainMenuFields_navItems_link_icon_size_Read
+  update: MainMenuFields_navItems_link_icon_size_Update
+  delete: MainMenuFields_navItems_link_icon_size_Delete
+}
+
+type MainMenuFields_navItems_link_icon_size_Create {
+  permission: Boolean!
+}
+
+type MainMenuFields_navItems_link_icon_size_Read {
+  permission: Boolean!
+}
+
+type MainMenuFields_navItems_link_icon_size_Update {
+  permission: Boolean!
+}
+
+type MainMenuFields_navItems_link_icon_size_Delete {
   permission: Boolean!
 }
 
@@ -7384,6 +7457,7 @@ type FooterFields_links_link_icon_Fields {
   type: FooterFields_links_link_icon_type
   position: FooterFields_links_link_icon_position
   filled: FooterFields_links_link_icon_filled
+  size: FooterFields_links_link_icon_size
   name: FooterFields_links_link_icon_name
   media: FooterFields_links_link_icon_media
 }
@@ -7454,6 +7528,29 @@ type FooterFields_links_link_icon_filled_Update {
 }
 
 type FooterFields_links_link_icon_filled_Delete {
+  permission: Boolean!
+}
+
+type FooterFields_links_link_icon_size {
+  create: FooterFields_links_link_icon_size_Create
+  read: FooterFields_links_link_icon_size_Read
+  update: FooterFields_links_link_icon_size_Update
+  delete: FooterFields_links_link_icon_size_Delete
+}
+
+type FooterFields_links_link_icon_size_Create {
+  permission: Boolean!
+}
+
+type FooterFields_links_link_icon_size_Read {
+  permission: Boolean!
+}
+
+type FooterFields_links_link_icon_size_Update {
+  permission: Boolean!
+}
+
+type FooterFields_links_link_icon_size_Delete {
   permission: Boolean!
 }
 
@@ -7985,6 +8082,7 @@ input mutationMainMenu_NavItems_Link_IconInput {
   type: String
   position: String
   filled: Boolean
+  size: Float
   name: String
   media: Int
 }
@@ -8022,6 +8120,7 @@ input mutationFooter_Links_Link_IconInput {
   type: String
   position: String
   filled: Boolean
+  size: Float
   name: String
   media: Int
 }

@@ -718,6 +718,7 @@ export interface Icon {
   type?: ('none' | 'icon' | 'media') | null;
   position?: ('before' | 'after') | null;
   filled?: boolean | null;
+  size?: number | null;
   name?: string | null;
   media?: (number | null) | Media;
 }
@@ -797,6 +798,7 @@ export interface IconSelect<T extends boolean = true> {
   type?: T;
   position?: T;
   filled?: T;
+  size?: T;
   name?: T;
   media?: T;
 }

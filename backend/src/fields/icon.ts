@@ -64,7 +64,7 @@ export const iconField: IconFieldFactory = ({
         positions,
       },
       components: {
-        Field: '/components/fields/IconField.tsx',
+        // Field: '/components/fields/IconField.tsx',
       },
     },
     fields: [
@@ -83,6 +83,11 @@ export const iconField: IconFieldFactory = ({
       {
         name: 'filled',
         type: 'checkbox',
+      },
+      {
+        name: 'size',
+        type: 'number',
+        defaultValue: 24,
       },
       {
         name: 'name',

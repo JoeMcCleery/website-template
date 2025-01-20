@@ -66,6 +66,7 @@ services:
     environment:
       SERVICES: s3
       S3_BUCKET: ${S3_BUCKET}
+      PERSISTENCE: 1
     volumes:
       - ./localstack/volume:/var/lib/localstack
       - ./localstack/init:/etc/localstack/init/ready.d

@@ -1,18 +1,18 @@
 <template>
   <nav class="flex gap-2">
-    <BaseLink v-for="(item, i) in navItems" :key="item.id" v-bind="item.props">
+    <BaseLink v-for="item in navItems" :key="item.id" v-bind="item.props">
       {{ item.label }}
     </BaseLink>
   </nav>
 </template>
 
 <script setup lang="ts">
-import type { Page } from '@common/payload-types'
+import type { MainMenu, Page } from '@common/payload-types'
 
-const { data, error } = await useMainMenu()
+const { data: mainMenu } = await useRestApi<MainMenu>('/globals/main-menu')
 
 const navItems = computed(() =>
-  data.value?.MainMenu.navItems?.map((item, i) => {
+  mainMenu.value?.navItems?.map((item, i) => {
     const link = item.link
     return {
       id: item.id ?? i,
