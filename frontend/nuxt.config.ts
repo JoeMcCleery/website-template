@@ -10,11 +10,7 @@ export default defineNuxtConfig({
     },
   },
   css: ['../../common/material-symbols.css'],
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxt/image',
-    '@nuxtjs/color-mode',
-  ],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@nuxtjs/color-mode'],
   tailwindcss: {
     editorSupport: {
       autocompleteUtil: true,
