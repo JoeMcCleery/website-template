@@ -61,14 +61,13 @@ services:
       - traefik.http.routers.pgadmin.rule=Host(`pgadmin.${DOMAIN_APP}`)
 
   localstack:
-    image: localstack/localstack
+    image: gresau/localstack-persist
     container_name: ${PROJECT_PREFIX}_localstack
     environment:
       SERVICES: s3
       S3_BUCKET: ${S3_BUCKET}
-      PERSISTENCE: 1
     volumes:
-      - ./localstack/volume:/var/lib/localstack
+      - ./localstack/persist:/persisted-data
       - ./localstack/init:/etc/localstack/init/ready.d
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
