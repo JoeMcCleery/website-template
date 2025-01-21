@@ -35,12 +35,12 @@ export interface Config {
     defaultIDType: number;
   };
   globals: {
-    meta: Meta;
+    'site-config': SiteConfig;
     'main-menu': MainMenu;
     footer: Footer;
   };
   globalsSelect: {
-    meta: MetaSelect<false> | MetaSelect<true>;
+    'site-config': SiteConfigSelect<false> | SiteConfigSelect<true>;
     'main-menu': MainMenuSelect<false> | MainMenuSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
   };
@@ -664,16 +664,18 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "meta".
+ * via the `definition` "site-config".
  */
-export interface Meta {
+export interface SiteConfig {
   id: number;
-  websiteTitle: string;
-  homePage: {
-    relationTo: 'pages';
-    value: number | Page;
+  settings: {
+    websiteTitle: string;
+    homePage: {
+      relationTo: 'pages';
+      value: number | Page;
+    };
+    favicon?: (number | null) | Media;
   };
-  favicon?: (number | null) | Media;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -749,12 +751,16 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "meta_select".
+ * via the `definition` "site-config_select".
  */
-export interface MetaSelect<T extends boolean = true> {
-  websiteTitle?: T;
-  homePage?: T;
-  favicon?: T;
+export interface SiteConfigSelect<T extends boolean = true> {
+  settings?:
+    | T
+    | {
+        websiteTitle?: T;
+        homePage?: T;
+        favicon?: T;
+      };
   meta?:
     | T
     | {

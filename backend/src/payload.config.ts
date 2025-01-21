@@ -23,8 +23,8 @@ import { Pages } from '@/collections/Pages'
 import { Users } from '@/collections/Users'
 import { Footer } from '@/globals/Footer'
 import { MainMenu } from '@/globals/MainMenu'
-import { Meta } from '@/globals/Meta'
-import { getMeta } from '@/utilities/getGlobals'
+import { SiteConfig } from '@/globals/SiteConfig'
+import { getSiteConfig } from '@/utilities/getGlobals'
 import { appUrl, cmsUrl, getAppUrl } from '@/utilities/getUrl'
 
 const filename = fileURLToPath(import.meta.url)
@@ -63,7 +63,7 @@ export default buildConfig({
       },
     },
   },
-  globals: [Meta, MainMenu, Footer],
+  globals: [SiteConfig, MainMenu, Footer],
   collections: [Pages, Users, Media],
   editor: lexicalEditor({
     features: () => {
@@ -127,12 +127,12 @@ export default buildConfig({
     }),
     seoPlugin({
       tabbedUI: true,
-      globals: ['meta'],
+      globals: ['site-config'],
       collections: ['pages'],
       uploadsCollection: 'media',
       generateTitle: async ({ doc, collectionSlug }) => {
-        const meta = await getMeta()
-        const title = meta.websiteTitle
+        const config = await getSiteConfig()
+        const title = config.settings.websiteTitle
         if (collectionSlug === 'pages') {
           return `${title} - ${doc.title}`
         }

@@ -1,6 +1,6 @@
-import { unstable_cache } from 'next/cache'
 import { getPayload } from 'payload'
-import type { Config, Meta } from 'src/payload-types'
+
+import type { Config, SiteConfig } from '@common/payload-types'
 
 import configPromise from '@/payload.config'
 
@@ -17,4 +17,5 @@ async function getGlobal(slug: Global, depth = 0) {
   return global
 }
 
-export const getMeta = async (depth = 0) => (await getGlobal('meta', depth)) as Meta
+export const getSiteConfig = async (depth = 0) =>
+  (await getGlobal('site-config', depth)) as SiteConfig
