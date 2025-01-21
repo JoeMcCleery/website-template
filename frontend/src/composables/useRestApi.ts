@@ -1,12 +1,21 @@
-export const useRestApi = <T>(path: string, depth: number = 1) => {
+export type RestAPIOptions<T> = {
+  depth?: number
+}
+
+export const useRestApi = <T>(
+  path: string,
+  options: RestAPIOptions<T> = {
+    depth: 1,
+  },
+) => {
   const config = useRuntimeConfig()
   const baseURL = import.meta.server ? config.apiUrl : config.public.apiUrl
 
   return useFetch<T>(path, {
-    key: `${path}-${depth}`,
+    key: `${path}-${options.depth}`,
     baseURL,
     query: {
-      depth,
+      depth: options.depth,
     },
   })
 }
