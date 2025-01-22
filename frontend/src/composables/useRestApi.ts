@@ -17,5 +17,6 @@ export const useRestApi = <T>(
     query: {
       depth: options.depth,
     },
+    dedupe: 'defer',
   })
 }
