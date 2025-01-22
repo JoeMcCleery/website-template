@@ -3,14 +3,14 @@
     v-if="!!name"
     class="material-symbols-rounded"
     :class="{ filled }"
-    :style="{ fontSize: size }"
+    :style="{ fontSize: sizePx, width: sizePx, height: sizePx }"
   >
     {{ name }}
   </span>
 </template>
 
 <script setup lang="ts">
-defineProps({
+const { size } = defineProps({
   name: String,
   filled: Boolean,
   size: {
@@ -18,4 +18,6 @@ defineProps({
     default: 24,
   },
 })
+
+const sizePx = `${size}px`
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="grid min-h-screen grid-rows-[auto_1fr_auto]">
+  <div class="font-roboto grid min-h-screen grid-rows-[auto_1fr_auto]">
     <BaseLayoutHeader />
     <main>
       <slot />

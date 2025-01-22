@@ -1,6 +1,5 @@
 <template>
   <nav class="flex gap-2">
-    {{ siteConfig?.settings.websiteTitle }}
     <BaseInputLink v-for="item in navItems" :key="item.id" v-bind="item.props">
       {{ item.label }}
     </BaseInputLink>
@@ -10,7 +9,6 @@
 <script setup lang="ts">
 import type { Page } from '@common/payload-types'
 
-const { data: siteConfig } = useGlobal('site-config')
 const { data: mainMenu } = useGlobal('main-menu')
 
 const navItems = computed(() =>
