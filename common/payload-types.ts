@@ -670,6 +670,7 @@ export interface SiteConfig {
   id: number;
   settings: {
     websiteTitle: string;
+    websiteIcon?: (number | null) | Media;
     homePage: {
       relationTo: 'pages';
       value: number | Page;
@@ -758,6 +759,7 @@ export interface SiteConfigSelect<T extends boolean = true> {
     | T
     | {
         websiteTitle?: T;
+        websiteIcon?: T;
         homePage?: T;
         favicon?: T;
       };
@@ -838,9 +840,4 @@ export interface FooterSelect<T extends boolean = true> {
  */
 export interface Auth {
   [k: string]: unknown;
-}
-
-
-declare module 'payload' {
-  export interface GeneratedTypes extends Config {}
 }

@@ -19,6 +19,11 @@ export const SiteConfig: GlobalConfig = {
               required: true,
             },
             {
+              name: 'websiteIcon',
+              type: 'upload',
+              relationTo: 'media',
+            },
+            {
               name: 'homePage',
               type: 'relationship',
               maxDepth: 1,
