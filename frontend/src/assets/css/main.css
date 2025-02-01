@@ -1,0 +1,5 @@
+@import 'tailwindcss' source('../../../src');
+@import './theme.css';
+@import './layers/index.css';
+
+@import '../../../../common/material-symbols.css';

@@ -9,6 +9,5 @@
     "tw`(.*?)`",
     "tw\\('(.*?)'\\)",
     "tw\\(\\s*('(.*?)'|\"(.*?)\")\\s*\\)"
-  ],
-  "tailwindCSS.experimental.configFile": "frontend/.nuxt/tailwind.config.cjs"
+  ]
 }

@@ -1,15 +1,15 @@
+import tailwindcss from '@tailwindcss/vite'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+  experimental: { appManifest: false },
   srcDir: 'src/',
-  runtimeConfig: {
-    apiUrl: '',
-    public: {
-      apiUrl: '',
-    },
+  vite: {
+    plugins: [tailwindcss()],
   },
-  css: ['../../common/material-symbols.css'],
+  css: ['~/assets/css/main.css'],
   app: {
     head: {
       link: [
@@ -29,18 +29,13 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxt/image',
-    '@nuxtjs/color-mode',
-    '@pinia/nuxt',
-    '@nuxtjs/fontaine',
-  ],
-  tailwindcss: {
-    editorSupport: {
-      autocompleteUtil: true,
+  runtimeConfig: {
+    apiUrl: '',
+    public: {
+      apiUrl: '',
     },
   },
+  modules: ['@nuxt/image', '@nuxtjs/color-mode', '@pinia/nuxt', '@nuxtjs/fontaine'],
   fontMetrics: {
     fonts: ['Roboto', 'Material Symbols Rounded'],
   },
