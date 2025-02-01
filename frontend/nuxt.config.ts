@@ -35,7 +35,7 @@ export default defineNuxtConfig({
       apiUrl: '',
     },
   },
-  modules: ['@nuxt/image', '@nuxtjs/color-mode', '@pinia/nuxt', '@nuxtjs/fontaine'],
+  modules: ['@nuxt/image', '@nuxtjs/color-mode', '@pinia/nuxt', '@nuxtjs/fontaine', '@vueuse/nuxt'],
   fontMetrics: {
     fonts: ['Roboto', 'Material Symbols Rounded'],
   },
