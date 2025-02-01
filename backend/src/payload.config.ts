@@ -94,6 +94,7 @@ export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, '../../common/payload-types.ts'),
+    declare: false,
   },
   graphQL: {
     schemaOutputFile: path.resolve(dirname, '../../common/schema.graphql'),
