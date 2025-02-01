@@ -1,9 +1,9 @@
 @layer components {
   .btn {
     @apply cursor-pointer rounded-lg border border-gray-500/20 px-4 py-2 select-none;
+  }
 
-    &.icon {
-      @apply rounded-full p-2.5;
-    }
+  .btn-round {
+    @apply cursor-pointer rounded-full border border-gray-500/20 p-2.5 select-none;
   }
 }

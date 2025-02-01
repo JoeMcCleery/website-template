@@ -22,7 +22,7 @@ const links = computed(() =>
       props: {
         to:
           link?.type === 'reference'
-            ? ((link.reference?.value as Page).path ?? undefined)
+            ? ((link.reference?.value as Page | undefined)?.path ?? undefined)
             : undefined,
         href: link?.type === 'custom' ? (link.url ?? undefined) : undefined,
         target: link?.newTab ? '_blank' : undefined,

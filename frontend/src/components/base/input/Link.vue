@@ -1,9 +1,5 @@
 <template>
-  <NuxtLink
-    v-bind="linkProps"
-    class="flex place-items-center gap-2"
-    :class="{ 'icon-filled-hover': iconIsIcon, icon: isButton && hasIcon && !$slots.default }"
-  >
+  <NuxtLink v-bind="linkProps" class="flex place-items-center gap-2">
     <template v-if="iconPos === 'before'">
       <BaseIcon v-if="iconIsIcon" v-bind="iconProps" />
       <BaseImage v-else-if="iconIsMedia" v-bind="mediaIconProps" class="rounded-full" />
@@ -23,13 +19,7 @@ import type { Icon, Media } from '@common/payload-types'
 import type { ChangeFields } from '@common/utility-types'
 import type { PropType } from 'vue'
 
-const {
-  to,
-  href,
-  target,
-  appearance = 'default',
-  icon,
-} = defineProps({
+const { to, href, target, appearance, icon } = defineProps({
   to: String,
   href: String,
   target: String,
@@ -39,35 +29,35 @@ const {
   >,
 })
 
-const isButton = appearance == 'button'
+const iconIsIcon = computed(() => icon?.type === 'icon')
+const iconIsMedia = computed(() => icon?.type === 'media')
+const iconPos = computed(() => icon?.position ?? 'before')
+const iconSize = computed(() => icon?.size ?? undefined)
+const sizePx = computed(() => `${iconSize.value}px`)
+const iconMedia = computed(() => (icon?.media as Media | null) ?? undefined)
 
-const linkProps = {
+const linkProps = computed(() => ({
   to,
   href,
   target,
-  class: isButton ? 'btn' : undefined,
-}
-
-const iconIsIcon = icon?.type === 'icon'
-const iconIsMedia = icon?.type === 'media'
-const hasIcon = iconIsIcon || iconIsMedia
-
-const iconPos = icon?.position ?? 'before'
-const iconSize = icon?.size ?? undefined
+  class: {
+    btn: appearance === 'button',
+    'btn-round': appearance === 'button-round',
+    'icon-filled-hover': iconIsIcon.value,
+  },
+}))
 
 const iconProps = computed(() => ({
   name: icon?.name ?? undefined,
   filled: icon?.filled ?? undefined,
-  size: iconSize,
+  size: iconSize.value,
 }))
 
-const sizePx = `${iconSize}px`
-const iconMedia = (icon?.media as Media | null) ?? undefined
 const mediaIconProps = computed(() => ({
-  src: iconMedia?.url ?? undefined,
-  style: { width: sizePx, height: sizePx },
-  width: iconSize,
-  height: iconSize,
-  alt: iconMedia?.alt,
+  src: iconMedia.value?.url ?? undefined,
+  style: { width: sizePx.value, height: sizePx.value },
+  width: iconSize.value,
+  height: iconSize.value,
+  alt: iconMedia.value?.alt,
 }))
 </script>

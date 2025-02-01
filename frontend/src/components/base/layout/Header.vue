@@ -25,16 +25,12 @@ const handleScroll = () => {
   if (scrollY < currentScrollY) {
     // Scroll down
     hideHeader(header.value)
+  } else if (currentScrollY == 0) {
+    // Reset
+    hideHeader(header.value)
   } else if (scrollY > currentScrollY) {
     // Scroll up
-    if (currentScrollY == 0) {
-      hideHeader(header.value)
-    } else {
-      showHeader(header.value)
-    }
-  } else if (currentScrollY == 0) {
-    // Init
-    hideHeader(header.value)
+    showHeader(header.value)
   }
   scrollY = currentScrollY
 }

@@ -1,11 +1,16 @@
 <template>
   <BaseInputLink
     v-if="!mode.forced"
-    appearance="button"
-    :icon="{ type: 'icon', name: isDarkMode ? 'dark_mode' : 'light_mode' }"
+    appearance="button-round"
     :title="isDarkMode ? 'Use light mode' : 'Use dark mode'"
+    class="icon-filled-hover"
     @click="toggleColourMode"
-  />
+  >
+    <BaseTransitionSlideFade>
+      <BaseIcon v-if="isDarkMode" name="dark_mode" />
+      <BaseIcon v-else name="light_mode" />
+    </BaseTransitionSlideFade>
+  </BaseInputLink>
 </template>
 
 <script setup lang="ts">

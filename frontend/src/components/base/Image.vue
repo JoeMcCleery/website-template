@@ -10,11 +10,11 @@ const { src, width, height, alt } = defineProps({
   alt: String,
 })
 
-const imgProps = {
+const imgProps = computed(() => ({
   src,
   width,
   height,
   alt,
   placeholder: width && height ? [width, height] : undefined,
-}
+}))
 </script>

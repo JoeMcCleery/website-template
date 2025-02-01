@@ -16,5 +16,5 @@ const { size = 24 } = defineProps({
   size: Number,
 })
 
-const sizePx = `${size}px`
+const sizePx = computed(() => `${size}px`)
 </script>

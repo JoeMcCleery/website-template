@@ -25,21 +25,21 @@ const { data: siteConfig } = useGlobal('site-config')
 const websiteTitle = computed(() => siteConfig.value?.settings.websiteTitle)
 const websiteIcon = computed(() => siteConfig.value?.settings.websiteIcon as Media | null)
 const websiteHomepage = computed(
-  () => (siteConfig.value?.settings.homePage.value as Page)?.path ?? '/',
+  () => (siteConfig.value?.settings.homePage?.value as Page | undefined)?.path ?? '/',
 )
 
-const linkProps = {
+const linkProps = computed(() => ({
   to: link ? websiteHomepage.value : undefined,
   title: websiteTitle.value,
   appearance: 'default',
-}
+}))
 
-const imgProps = {
+const imgProps = computed(() => ({
   src: websiteIcon.value?.url ?? undefined,
   alt: websiteTitle.value,
   style: { width, height },
   width: websiteIcon.value?.width ?? undefined,
   height: websiteIcon.value?.height ?? undefined,
   class: tw('rounded-lg'),
-}
+}))
 </script>
