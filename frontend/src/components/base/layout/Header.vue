@@ -1,15 +1,7 @@
 <template>
   <header ref="header" class="sticky p-4 transition-[top] duration-500">
-    <div
-      class="content grid min-h-20 grid-cols-[auto_1fr_auto] gap-8 rounded-xl bg-gray-200/50 p-4 backdrop-blur-lg"
-    >
-      <BaseWebsiteIcon />
-
-      <BaseLayoutNavigation />
-
-      <div class="flex place-items-center">
-        <BaseInputColourModeToggle />
-      </div>
+    <div class="content rounded-xl bg-gray-200/50 p-4 backdrop-blur-lg">
+      <BaseHeaderContent />
     </div>
   </header>
 </template>

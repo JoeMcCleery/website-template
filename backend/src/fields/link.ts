@@ -44,6 +44,7 @@ export const linkField: LinkFieldFactory = ({ appearances, overrides = {} } = {}
   const linkResult: Field = {
     name: 'link',
     type: 'group',
+    interfaceName: 'link',
     admin: {
       hideGutter: true,
     },

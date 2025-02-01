@@ -696,22 +696,27 @@ export interface MainMenu {
   id: number;
   navItems?:
     | {
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'pages';
-            value: number | Page;
-          } | null;
-          url?: string | null;
-          label?: string | null;
-          icon?: Icon;
-        };
+        link?: Link;
         id?: string | null;
       }[]
     | null;
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "link".
+ */
+export interface Link {
+  type?: ('reference' | 'custom') | null;
+  newTab?: boolean | null;
+  reference?: {
+    relationTo: 'pages';
+    value: number | Page;
+  } | null;
+  url?: string | null;
+  label?: string | null;
+  icon?: Icon;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -733,17 +738,7 @@ export interface Footer {
   id: number;
   links?:
     | {
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'pages';
-            value: number | Page;
-          } | null;
-          url?: string | null;
-          label?: string | null;
-          icon?: Icon;
-        };
+        link?: Link;
         id?: string | null;
       }[]
     | null;
@@ -782,21 +777,24 @@ export interface MainMenuSelect<T extends boolean = true> {
   navItems?:
     | T
     | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              icon?: T | IconSelect<T>;
-            };
+        link?: T | LinkSelect<T>;
         id?: T;
       };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "link_select".
+ */
+export interface LinkSelect<T extends boolean = true> {
+  type?: T;
+  newTab?: T;
+  reference?: T;
+  url?: T;
+  label?: T;
+  icon?: T | IconSelect<T>;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -818,16 +816,7 @@ export interface FooterSelect<T extends boolean = true> {
   links?:
     | T
     | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              icon?: T | IconSelect<T>;
-            };
+        link?: T | LinkSelect<T>;
         id?: T;
       };
   updatedAt?: T;
