@@ -10,13 +10,10 @@
 </template>
 
 <script setup lang="ts">
-const { size } = defineProps({
+const { size = 24 } = defineProps({
   name: String,
   filled: Boolean,
-  size: {
-    type: Number,
-    default: 24,
-  },
+  size: Number,
 })
 
 const sizePx = `${size}px`

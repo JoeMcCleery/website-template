@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex gap-2">
+  <nav class="flex place-items-center gap-4">
     <BaseInputLink v-for="item in navItems" :key="item.id" v-bind="item.props">
       {{ item.label }}
     </BaseInputLink>
@@ -25,6 +25,7 @@ const navItems = computed(() =>
         href: link?.type === 'custom' ? (link.url ?? undefined) : undefined,
         target: link?.newTab ? '_blank' : undefined,
         icon: link?.icon,
+        appearance: 'button',
       },
     }
   }),

@@ -9,6 +9,6 @@ import type { Media } from '@common/payload-types'
 
 const { data: siteConfig } = useGlobal('site-config')
 
-const favicon = computed(() => (siteConfig.value?.settings?.favicon as Media)?.url)
+const favicon = computed(() => (siteConfig.value?.settings?.favicon as Media | null)?.url)
 useFavicon(favicon)
 </script>
