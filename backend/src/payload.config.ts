@@ -3,6 +3,8 @@ import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
+import { Config } from '@common/payload-types'
+
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
@@ -143,3 +145,7 @@ export default buildConfig({
     }),
   ],
 })
+
+declare module 'payload' {
+  export interface GeneratedTypes extends Config {}
+}
