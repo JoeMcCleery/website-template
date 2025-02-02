@@ -5,7 +5,7 @@
         <BaseLinkList :items="footerLinks" appearance="link" />
       </div>
 
-      <div class="flex items-center justify-between gap-4">
+      <div v-if="showBottomRow" class="flex items-center justify-between gap-4">
         <div>
           <p v-if="copyright?.showCopyright" class="text-sm text-gray-900/20">
             &copy; {{ new Date().getFullYear() }} {{ copyright.entity }}
@@ -24,4 +24,5 @@
 const { data } = useGlobal('footer')
 const footerLinks = computed(() => data.value?.links ?? [])
 const copyright = computed(() => data.value?.copyright)
+const showBottomRow = computed(() => data.value?.showMadeByLink || copyright.value?.showCopyright)
 </script>
