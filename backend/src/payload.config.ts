@@ -79,20 +79,21 @@ export default buildConfig({
       ]
     },
   }),
-  email: devMode
-    ? nodemailerAdapter()
-    : nodemailerAdapter({
-        defaultFromAddress: process.env.DEFAULT_FROM_EMAIL || 'info@payloadcms.com',
-        defaultFromName: process.env.DEFAULT_FROM_EMAIL_NAME || 'Payload',
-        transportOptions: {
-          host: process.env.SMTP_HOST,
-          port: 587,
-          auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS,
-          },
-        },
-      }),
+  email: nodemailerAdapter({
+    defaultFromAddress: process.env.DEFAULT_FROM_EMAIL || 'info@payloadcms.com',
+    defaultFromName: process.env.DEFAULT_FROM_EMAIL_NAME || 'Payload',
+    transportOptions: {
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+      tls: {
+        rejectUnauthorized: !devMode, // Allow host self signed certificate in development mode
+      },
+    },
+  }),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, '../../common/payload-types.ts'),
