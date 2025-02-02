@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 
-WORKDIR /app
+WORKDIR /backend
 
 COPY ./backend/package.json ./backend/yarn.lock ./
 

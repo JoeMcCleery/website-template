@@ -98,9 +98,9 @@ services:
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
       S3_BUCKET: ${S3_BUCKET}
     volumes:
-      - ./backend:/app
+      - ./backend:/backend
       - ./common:/common
-      - backend_node_modules:/app/node_modules
+      - backend_node_modules:/backend/node_modules
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -116,10 +116,9 @@ services:
       NUXT_API_URL: http://backend:3000/api
       NUXT_PUBLIC_API_URL: https://cms.${DOMAIN_APP}/api
     volumes:
-      - ./frontend:/app
+      - ./frontend:/frontend
       - ./common:/common
-      - frontend_node_modules:/app/node_modules
-      - frontend_nuxt_output:/app/.nuxt
+      - frontend_node_modules:/frontend/node_modules
     tmpfs: /tmp
     restart: unless-stopped
     labels:
@@ -133,7 +132,6 @@ volumes:
   pgadmin:
   backend_node_modules:
   frontend_node_modules:
-  frontend_nuxt_output:
 
 configs:
   pgpass:

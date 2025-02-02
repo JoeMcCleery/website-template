@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 
-WORKDIR /app
+WORKDIR /frontend
 
 COPY ./frontend/package.json ./frontend/yarn.lock ./
 
@@ -10,7 +10,8 @@ COPY ./common ../common
 
 COPY ./frontend .
 
-RUN yarn install
+# Make sure post install script is run
+RUN yarn postinstall
 
 EXPOSE 3000
 
