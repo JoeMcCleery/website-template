@@ -736,6 +736,11 @@ export interface Icon {
  */
 export interface Footer {
   id: number;
+  copyright: {
+    showCopyright: boolean;
+    entity?: string | null;
+  };
+  showMadeByLink: boolean;
   links?:
     | {
         link?: Link;
@@ -813,6 +818,13 @@ export interface IconSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  copyright?:
+    | T
+    | {
+        showCopyright?: T;
+        entity?: T;
+      };
+  showMadeByLink?: T;
   links?:
     | T
     | {

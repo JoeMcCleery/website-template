@@ -6,9 +6,15 @@
       </div>
 
       <div class="flex items-center justify-between gap-4">
-        <p class="text-sm text-gray-900/20">&copy; Copyright {{ new Date().getFullYear() }}</p>
+        <div>
+          <p v-if="copyright?.showCopyright" class="text-sm text-gray-900/20">
+            &copy; {{ new Date().getFullYear() }} {{ copyright.entity }}
+          </p>
+        </div>
 
-        <BaseFearIndigoLink />
+        <div>
+          <BaseMadeByLink v-if="data?.showMadeByLink" />
+        </div>
       </div>
     </div>
   </footer>
@@ -17,4 +23,5 @@
 <script setup lang="ts">
 const { data } = useGlobal('footer')
 const footerLinks = computed(() => data.value?.links ?? [])
+const copyright = computed(() => data.value?.copyright)
 </script>
