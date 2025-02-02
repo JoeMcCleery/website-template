@@ -1,8 +1,7 @@
 import { Payload } from 'payload'
 
 import { User } from '@common/payload-types'
-
-import { getSeededColour } from '@/utilities/getSeededColour'
+import { getSeededColour } from '@common/utilities/getSeededColour'
 
 export default async function BaseAvatar({ user, payload }: { user: User; payload: Payload }) {
   let avatar = user.avatar as User['avatar']
