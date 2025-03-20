@@ -5,10 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import type { Media } from '@common/payload-types'
+const { favicon } = useSiteConfig()
 
-const { data: siteConfig } = useGlobal('site-config')
+const faviconUrl = computed(() => favicon.value?.url)
 
-const favicon = computed(() => (siteConfig.value?.settings?.favicon as Media | null)?.url)
-useFavicon(favicon)
+useFavicon(faviconUrl)
 </script>

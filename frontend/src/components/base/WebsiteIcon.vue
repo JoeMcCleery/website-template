@@ -8,8 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import type { Media, Page } from '@common/payload-types'
-
 const {
   link = true,
   width = 'auto',

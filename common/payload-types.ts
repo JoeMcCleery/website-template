@@ -670,15 +670,13 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface SiteConfig {
   id: number;
-  settings: {
-    websiteTitle: string;
-    websiteIcon?: (number | null) | Media;
-    homePage: {
-      relationTo: 'pages';
-      value: number | Page;
-    };
-    favicon?: (number | null) | Media;
+  websiteTitle: string;
+  websiteIcon?: (number | null) | Media;
+  homePage: {
+    relationTo: 'pages';
+    value: number | Page;
   };
+  favicon?: (number | null) | Media;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -795,14 +793,10 @@ export interface Footer {
  * via the `definition` "site-config_select".
  */
 export interface SiteConfigSelect<T extends boolean = true> {
-  settings?:
-    | T
-    | {
-        websiteTitle?: T;
-        websiteIcon?: T;
-        homePage?: T;
-        favicon?: T;
-      };
+  websiteTitle?: T;
+  websiteIcon?: T;
+  homePage?: T;
+  favicon?: T;
   meta?:
     | T
     | {

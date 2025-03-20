@@ -10,7 +10,7 @@ export const SiteConfig: GlobalConfig = {
       type: 'tabs',
       tabs: [
         {
-          name: 'settings',
+          label: 'Meta',
           fields: [
             {
               name: 'websiteTitle',

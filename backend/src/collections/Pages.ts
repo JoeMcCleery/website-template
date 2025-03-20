@@ -21,6 +21,7 @@ export const Pages: CollectionConfig = {
       type: 'tabs',
       tabs: [
         {
+          label: 'Meta',
           fields: [
             {
               name: 'title',
@@ -40,9 +41,9 @@ export const Pages: CollectionConfig = {
               },
             },
           ],
-          label: 'Meta',
         },
         {
+          label: 'Content',
           fields: [
             {
               name: 'layout',
@@ -51,7 +52,6 @@ export const Pages: CollectionConfig = {
               required: true,
             },
           ],
-          label: 'Content',
         },
       ],
     },
