@@ -1,5 +1,5 @@
 <template>
-  <header ref="header" class="sticky p-4 transition-[top] duration-500">
+  <header ref="header" class="sticky p-4 transition-[top] duration-300">
     <div class="content rounded-xl bg-gray-200/50 p-4 backdrop-blur-lg">
       <BaseHeaderContent />
     </div>
