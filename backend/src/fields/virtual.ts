@@ -22,6 +22,6 @@ export const virtualField: VirtualFieldFactory = ({
       hooks: {
         afterRead: [hook],
       },
-    },
+    } as Field,
     overrides,
   )

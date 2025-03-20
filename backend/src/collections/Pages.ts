@@ -3,7 +3,6 @@ import type { CollectionConfig, FieldHook } from 'payload'
 import { publishedOnly } from '@/access/publishedOnly'
 import { FormBlock } from '@/blocks/Form'
 import { slugField } from '@/fields/slug'
-import { virtualField } from '@/fields/virtual'
 import { getPath } from '@/utilities/getUrl'
 
 const pathHook: FieldHook = ({ data, originalDoc }) => getPath(data?.slug || originalDoc?.slug)
@@ -29,7 +28,17 @@ export const Pages: CollectionConfig = {
               required: true,
             },
             slugField(),
-            virtualField({ name: 'path', hook: pathHook }),
+            {
+              name: 'path',
+              type: 'text',
+              unique: true,
+              admin: {
+                readOnly: true,
+              },
+              hooks: {
+                beforeValidate: [pathHook],
+              },
+            },
           ],
           label: 'Meta',
         },

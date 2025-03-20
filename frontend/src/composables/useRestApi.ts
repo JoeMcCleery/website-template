@@ -1,21 +1,23 @@
+import type { Where } from 'payload'
+import { stringify } from 'qs-esm'
+
 export type RestAPIOptions = {
   depth?: number
+  where?: Where
 }
 
-export const useRestApi = <T>(
-  path: string,
-  options: RestAPIOptions = {
-    depth: 1,
-  },
-) => {
+export const useRestApi = <T>(path: string, options: RestAPIOptions = {}) => {
   const config = useRuntimeConfig()
   const baseURL = import.meta.server ? config.apiUrl : config.public.apiUrl
 
-  return useFetch<T>(path, {
-    key: `${path}-${options.depth}`,
+  const depth = options.depth ?? 1
+  let where = stringify({ where: options.where }, { addQueryPrefix: true }) ?? undefined
+
+  return useFetch<T>(`${path}${where}`, {
+    key: `${path}-${depth}-${where}`,
     baseURL,
     query: {
-      depth: options.depth,
+      depth,
     },
     dedupe: 'defer',
   })

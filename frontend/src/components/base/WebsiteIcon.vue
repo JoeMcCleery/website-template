@@ -20,16 +20,12 @@ const {
   height: String,
 })
 
-const { data: siteConfig } = useGlobal('site-config')
+const { websiteTitle, websiteIcon, homePage } = useSiteConfig()
 
-const websiteTitle = computed(() => siteConfig.value?.settings.websiteTitle)
-const websiteIcon = computed(() => siteConfig.value?.settings.websiteIcon as Media | null)
-const websiteHomepage = computed(
-  () => (siteConfig.value?.settings.homePage?.value as Page | undefined)?.path ?? '/',
-)
+const homepagePath = computed(() => homePage.value?.path ?? '/')
 
 const linkProps = computed(() => ({
-  to: link ? websiteHomepage.value : undefined,
+  to: link ? homepagePath.value : undefined,
   title: websiteTitle.value,
   appearance: 'default',
 }))
