@@ -36,11 +36,13 @@ export interface Config {
   };
   globals: {
     'site-config': SiteConfig;
+    'about-info': AboutInfo;
     'main-menu': MainMenu;
     footer: Footer;
   };
   globalsSelect: {
     'site-config': SiteConfigSelect<false> | SiteConfigSelect<true>;
+    'about-info': AboutInfoSelect<false> | AboutInfoSelect<true>;
     'main-menu': MainMenuSelect<false> | MainMenuSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
   };
@@ -690,11 +692,39 @@ export interface SiteConfig {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "main-menu".
+ * via the `definition` "about-info".
  */
-export interface MainMenu {
+export interface AboutInfo {
   id: number;
-  navItems?:
+  locations?:
+    | {
+        label: string;
+        address: string;
+        id?: string | null;
+      }[]
+    | null;
+  openingHours?:
+    | {
+        'day(s)': string;
+        times: string;
+        id?: string | null;
+      }[]
+    | null;
+  phones?:
+    | {
+        label: string;
+        number: string;
+        id?: string | null;
+      }[]
+    | null;
+  emails?:
+    | {
+        label: string;
+        email: string;
+        id?: string | null;
+      }[]
+    | null;
+  links?:
     | {
         link?: Link;
         id?: string | null;
@@ -732,21 +762,31 @@ export interface Icon {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "footer".
+ * via the `definition` "main-menu".
  */
-export interface Footer {
+export interface MainMenu {
   id: number;
-  copyright: {
-    showCopyright: boolean;
-    entity?: string | null;
-  };
-  showMadeByLink: boolean;
-  links?:
+  navItems?:
     | {
         link?: Link;
         id?: string | null;
       }[]
     | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  showAboutInfo?: boolean | null;
+  copyright: {
+    showCopyright: boolean;
+    entity?: string | null;
+  };
+  showMadeByLink: boolean;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -776,10 +816,38 @@ export interface SiteConfigSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "main-menu_select".
+ * via the `definition` "about-info_select".
  */
-export interface MainMenuSelect<T extends boolean = true> {
-  navItems?:
+export interface AboutInfoSelect<T extends boolean = true> {
+  locations?:
+    | T
+    | {
+        label?: T;
+        address?: T;
+        id?: T;
+      };
+  openingHours?:
+    | T
+    | {
+        'day(s)'?: T;
+        times?: T;
+        id?: T;
+      };
+  phones?:
+    | T
+    | {
+        label?: T;
+        number?: T;
+        id?: T;
+      };
+  emails?:
+    | T
+    | {
+        label?: T;
+        email?: T;
+        id?: T;
+      };
+  links?:
     | T
     | {
         link?: T | LinkSelect<T>;
@@ -815,9 +883,25 @@ export interface IconSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "main-menu_select".
+ */
+export interface MainMenuSelect<T extends boolean = true> {
+  navItems?:
+    | T
+    | {
+        link?: T | LinkSelect<T>;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  showAboutInfo?: T;
   copyright?:
     | T
     | {
@@ -825,12 +909,6 @@ export interface FooterSelect<T extends boolean = true> {
         entity?: T;
       };
   showMadeByLink?: T;
-  links?:
-    | T
-    | {
-        link?: T | LinkSelect<T>;
-        id?: T;
-      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

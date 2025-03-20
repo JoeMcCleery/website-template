@@ -1,8 +1,8 @@
 <template>
   <footer class="bg-gray-50">
     <div class="content grid gap-8 p-8">
-      <div class="flex items-center gap-4">
-        <BaseLinkList :items="footerLinks" appearance="link" />
+      <div v-if="showAboutInfo" class="flex items-center gap-4">
+        <BaseLinkList :items="links" appearance="link" />
       </div>
 
       <div v-if="showBottomRow" class="flex items-center justify-between gap-4">
@@ -13,7 +13,7 @@
         </div>
 
         <div>
-          <BaseMadeByLink v-if="data?.showMadeByLink" />
+          <BaseMadeByLink v-if="footer?.showMadeByLink" />
         </div>
       </div>
     </div>
@@ -21,8 +21,10 @@
 </template>
 
 <script setup lang="ts">
-const { data } = useGlobal('footer')
-const footerLinks = computed(() => data.value?.links ?? [])
-const copyright = computed(() => data.value?.copyright)
-const showBottomRow = computed(() => data.value?.showMadeByLink || copyright.value?.showCopyright)
+const { data: footer } = useGlobal('footer')
+const { locations, openingHours, phones, emails, links } = useAboutInfo()
+
+const showAboutInfo = computed(() => footer.value?.showAboutInfo)
+const copyright = computed(() => footer.value?.copyright)
+const showBottomRow = computed(() => footer.value?.showMadeByLink || copyright.value?.showCopyright)
 </script>

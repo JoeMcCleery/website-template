@@ -1,10 +1,10 @@
-export type RestAPIOptions<T> = {
+export type RestAPIOptions = {
   depth?: number
 }
 
 export const useRestApi = <T>(
   path: string,
-  options: RestAPIOptions<T> = {
+  options: RestAPIOptions = {
     depth: 1,
   },
 ) => {

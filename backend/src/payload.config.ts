@@ -23,6 +23,7 @@ import { s3Storage } from '@payloadcms/storage-s3'
 import { Media } from '@/collections/Media'
 import { Pages } from '@/collections/Pages'
 import { Users } from '@/collections/Users'
+import { AboutInfo } from '@/globals/AboutInfo'
 import { Footer } from '@/globals/Footer'
 import { MainMenu } from '@/globals/MainMenu'
 import { SiteConfig } from '@/globals/SiteConfig'
@@ -65,7 +66,7 @@ export default buildConfig({
       },
     },
   },
-  globals: [SiteConfig, MainMenu, Footer],
+  globals: [SiteConfig, AboutInfo, MainMenu, Footer],
   collections: [Pages, Users, Media],
   editor: lexicalEditor({
     features: () => {

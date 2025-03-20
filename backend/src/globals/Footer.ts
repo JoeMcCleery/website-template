@@ -1,13 +1,16 @@
 import type { GlobalConfig } from 'payload'
 
-import { linkField } from '@/fields/link'
-
 export const Footer: GlobalConfig = {
   slug: 'footer',
   access: {
     read: () => true,
   },
   fields: [
+    {
+      name: 'showAboutInfo',
+      type: 'checkbox',
+      defaultValue: true,
+    },
     {
       name: 'copyright',
       type: 'group',
@@ -33,12 +36,6 @@ export const Footer: GlobalConfig = {
       type: 'checkbox',
       defaultValue: true,
       required: true,
-    },
-    {
-      name: 'links',
-      type: 'array',
-      fields: [linkField({ appearances: false })],
-      maxRows: 6,
     },
   ],
 }
