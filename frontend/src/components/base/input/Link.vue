@@ -15,8 +15,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Icon, Media } from '@common/payload-types'
-import type { ChangeFields } from '@common/utility-types'
+import type { Icon, Media } from 'backend/src/payload-types'
+import type { ChangeFields } from 'common/utilities/types'
 import type { PropType } from 'vue'
 
 const { to, href, target, appearance, icon } = defineProps({

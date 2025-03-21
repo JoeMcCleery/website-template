@@ -1,6 +1,5 @@
 import { Field, Option, deepMerge } from 'payload'
-
-import { iconField } from '@/fields/icon'
+import { iconField } from '~/fields/icon'
 
 type LinkFieldFactory = (options?: {
   appearances?: false | LinkAppearance[]

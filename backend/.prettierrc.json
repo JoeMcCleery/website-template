@@ -4,10 +4,10 @@
   "printWidth": 100,
   "semi": false,
   "importOrder": [
-    "^@common/(.*)$",
+    "^(common|frontend|backend)(/(.+)|)$",
     "^@payloadcms/(.*)$",
-    "^@payload-config/(.*)$",
-    "^@/(.*)$",
+    "^@payload-config$",
+    "^~/(.*)$",
     "^[./]"
   ],
   "importOrderSeparation": true,

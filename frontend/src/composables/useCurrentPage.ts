@@ -1,4 +1,4 @@
-import type { Page } from '@common/payload-types'
+import type { Page } from 'backend/src/payload-types'
 
 export const useCurrentPage = () => {
   const route = useRoute()

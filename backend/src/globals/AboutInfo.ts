@@ -1,6 +1,5 @@
 import type { GlobalConfig } from 'payload'
-
-import { linkField } from '@/fields/link'
+import { linkField } from '~/fields/link'
 
 export const AboutInfo: GlobalConfig = {
   slug: 'about-info',
@@ -29,7 +28,8 @@ export const AboutInfo: GlobalConfig = {
       type: 'array',
       fields: [
         {
-          name: 'day(s)',
+          label: 'Day(s)',
+          name: 'days',
           type: 'text',
           required: true,
         },

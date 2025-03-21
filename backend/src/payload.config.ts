@@ -2,8 +2,15 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
-
-import { Config } from '@common/payload-types'
+import { Media } from '~/collections/Media'
+import { Pages } from '~/collections/Pages'
+import { Users } from '~/collections/Users'
+import { AboutInfo } from '~/globals/AboutInfo'
+import { Footer } from '~/globals/Footer'
+import { MainMenu } from '~/globals/MainMenu'
+import { SiteConfig } from '~/globals/SiteConfig'
+import { getSiteConfig } from '~/utilities/getGlobals'
+import { appUrl, cmsUrl, getAppUrl } from '~/utilities/getUrl'
 
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
@@ -19,16 +26,6 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 import { s3Storage } from '@payloadcms/storage-s3'
-
-import { Media } from '@/collections/Media'
-import { Pages } from '@/collections/Pages'
-import { Users } from '@/collections/Users'
-import { AboutInfo } from '@/globals/AboutInfo'
-import { Footer } from '@/globals/Footer'
-import { MainMenu } from '@/globals/MainMenu'
-import { SiteConfig } from '@/globals/SiteConfig'
-import { getSiteConfig } from '@/utilities/getGlobals'
-import { appUrl, cmsUrl, getAppUrl } from '@/utilities/getUrl'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -97,16 +94,16 @@ export default buildConfig({
   }),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
-    outputFile: path.resolve(dirname, '../../common/payload-types.ts'),
-    declare: false,
+    outputFile: path.resolve(dirname, './payload-types.ts'),
   },
   graphQL: {
-    schemaOutputFile: path.resolve(dirname, '../../common/schema.graphql'),
+    schemaOutputFile: path.resolve(dirname, './gql-schema.graphql'),
   },
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
     },
+    generateSchemaOutputFile: path.resolve(dirname, './db-schema.ts'),
   }),
   sharp,
   plugins: [
@@ -137,7 +134,7 @@ export default buildConfig({
       uploadsCollection: 'media',
       generateTitle: async ({ doc, collectionSlug }) => {
         const config = await getSiteConfig()
-        const title = config.settings.websiteTitle
+        const title = config.websiteTitle
         if (collectionSlug === 'pages') {
           return `${title} - ${doc.title}`
         }
@@ -147,7 +144,3 @@ export default buildConfig({
     }),
   ],
 })
-
-declare module 'payload' {
-  export interface GeneratedTypes extends Config {}
-}

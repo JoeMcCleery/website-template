@@ -1,6 +1,5 @@
+import { toSlug } from 'common/utilities/toSlug'
 import { Field, FieldHook, deepMerge } from 'payload'
-
-import { toSlug } from '@common/utilities/toSlug'
 
 type SlugFieldFactory = (overrides?: Partial<Field>) => Field
 

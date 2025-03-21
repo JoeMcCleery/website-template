@@ -11,10 +11,11 @@ import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c08
 import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { PreviewComponent as PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
-import { default as default_ec635f7d4bd314ea4e6cd105e91eead9 } from 'src/components/cells/AvatarCell.tsx'
-import { default as default_5a7fd4b61c004f4768201ab5f1390749 } from 'src/components/account/AccountAvatar.tsx'
-import { default as default_3ffdd7924294e4db18c08b55b6618d41 } from 'src/components/graphics/IconGraphic.tsx'
-import { default as default_f5a3eb617cfdb2eac19e0ddd10d8a9c2 } from 'src/components/graphics/LogoGraphic.tsx'
+import { default as default_ec635f7d4bd314ea4e6cd105e91eead9 } from '../../../components/cells/AvatarCell.tsx'
+import { default as default_5a7fd4b61c004f4768201ab5f1390749 } from '../../../components/account/AccountAvatar.tsx'
+import { default as default_3ffdd7924294e4db18c08b55b6618d41 } from '../../../components/graphics/IconGraphic.tsx'
+import { default as default_f5a3eb617cfdb2eac19e0ddd10d8a9c2 } from '../../../components/graphics/LogoGraphic.tsx'
+import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 
 export const importMap = {
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
@@ -33,5 +34,6 @@ export const importMap = {
   "/components/cells/AvatarCell.tsx#default": default_ec635f7d4bd314ea4e6cd105e91eead9,
   "/components/account/AccountAvatar.tsx#default": default_5a7fd4b61c004f4768201ab5f1390749,
   "/components/graphics/IconGraphic.tsx#default": default_3ffdd7924294e4db18c08b55b6618d41,
-  "/components/graphics/LogoGraphic.tsx#default": default_f5a3eb617cfdb2eac19e0ddd10d8a9c2
+  "/components/graphics/LogoGraphic.tsx#default": default_f5a3eb617cfdb2eac19e0ddd10d8a9c2,
+  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24
 }

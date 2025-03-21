@@ -1,2 +1,5 @@
 # localstack
 /localstack/persist
+
+# Dependencies
+node_modules

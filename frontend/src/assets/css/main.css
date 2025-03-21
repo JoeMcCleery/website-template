@@ -2,4 +2,4 @@
 @import './theme.css';
 @import './layers/index.css';
 
-@import '../../../../common/material-symbols.css';
+@import 'common/css/material-symbols.css';

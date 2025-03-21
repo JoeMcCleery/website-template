@@ -1,4 +1,4 @@
-import type { Config } from '@common/payload-types'
+import type { Config } from 'backend/src/payload-types'
 import type { RestAPIOptions } from './useRestApi'
 
 export const useGlobal = <S extends keyof Config['globals']>(slug: S, options?: RestAPIOptions) => {

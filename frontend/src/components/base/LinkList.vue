@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Link, Page } from '@common/payload-types'
+import type { Link, Page } from 'backend/src/payload-types'
 import type { PropType } from 'vue'
 
 const { items, appearance = 'button' } = defineProps({

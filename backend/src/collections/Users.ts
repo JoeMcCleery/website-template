@@ -1,6 +1,5 @@
 import type { CollectionConfig, FieldHook } from 'payload'
-
-import { virtualField } from '@/fields/virtual'
+import { virtualField } from '~/fields/virtual'
 
 const fullNameHook: FieldHook = ({ data, originalDoc }) => {
   const firstName = data?.firstName || originalDoc?.firstName

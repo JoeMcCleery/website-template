@@ -1,6 +1,5 @@
 import type { GlobalConfig } from 'payload'
-
-import { linkField } from '@/fields/link'
+import { linkField } from '~/fields/link'
 
 export const MainMenu: GlobalConfig = {
   slug: 'main-menu',

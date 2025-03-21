@@ -1,14 +1,18 @@
 FROM node:lts-alpine
 
-WORKDIR /frontend
+RUN mkdir -p /common
+RUN mkdir -p /frontend
 
-COPY ./frontend/package.json ./frontend/yarn.lock ./
+COPY ./package.json ./yarn.lock ./
+COPY ./common/package.json ./common
+COPY ./frontend/package.json ./frontend
 
 RUN yarn install
 
-COPY ./common ../common
+COPY ./common ./common
+COPY ./frontend ./frontend
 
-COPY ./frontend .
+WORKDIR /frontend
 
 # Make sure post install script is run
 RUN yarn postinstall

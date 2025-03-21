@@ -1,4 +1,4 @@
-import type { Media, Page } from '@common/payload-types'
+import type { Media, Page } from 'backend/src/payload-types'
 import type { RestAPIOptions } from './useRestApi'
 
 export const useSiteConfig = (options?: RestAPIOptions) => {

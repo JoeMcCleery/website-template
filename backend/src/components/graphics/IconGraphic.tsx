@@ -1,4 +1,4 @@
-import BaseIcon from '@/components/base/BaseIcon'
+import BaseIcon from '~/components/base/BaseIcon'
 
 export default function IconGrapic() {
   return (

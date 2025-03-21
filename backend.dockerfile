@@ -1,14 +1,18 @@
 FROM node:lts-alpine
 
-WORKDIR /backend
+RUN mkdir -p /common
+RUN mkdir -p /backend
 
-COPY ./backend/package.json ./backend/yarn.lock ./
+COPY ./package.json ./yarn.lock ./
+COPY ./common/package.json ./common
+COPY ./backend/package.json ./backend
 
 RUN yarn install
 
-COPY ./common ../common
+COPY ./common ./common
+COPY ./backend ./backend
 
-COPY ./backend .
+WORKDIR /backend
 
 EXPOSE 3000
 

@@ -1,8 +1,6 @@
+import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-
-import type { Config, SiteConfig } from '@common/payload-types'
-
-import configPromise from '@/payload.config'
+import type { Config, SiteConfig } from '~/payload-types'
 
 type Global = keyof Config['globals']
 

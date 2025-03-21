@@ -1,50 +1,50 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "A blank template to get started with Payload 3.0",
-  "license": "MIT",
-  "type": "module",
-  "scripts": {
-    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "generate": "yarn generate:importmap && yarn generate:types && yarn generate:schema",
-    "generate:importmap": "cross-env NODE_ENV=development NODE_OPTIONS=--no-deprecation payload generate:importmap",
-    "generate:types": "cross-env NODE_ENV=development NODE_OPTIONS=--no-deprecation payload generate:types",
-    "generate:db-schema": "cross-env NODE_ENV=development NODE_OPTIONS=--no-deprecation payload generate:db-schema",
-    "generate:schema": "cross-env NODE_ENV=development PAYLOAD_CONFIG_PATH=src/payload.config.ts payload-graphql generate:schema",
-    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
-    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
-  },
   "dependencies": {
-    "@payloadcms/db-postgres": "^3.16.0",
-    "@payloadcms/email-nodemailer": "^3.16.0",
-    "@payloadcms/next": "^3.16.0",
-    "@payloadcms/plugin-form-builder": "^3.16.0",
-    "@payloadcms/plugin-seo": "^3.16.0",
-    "@payloadcms/richtext-lexical": "^3.16.0",
-    "@payloadcms/storage-s3": "^3.16.0",
+    "@payloadcms/db-postgres": "^3.29.0",
+    "@payloadcms/email-nodemailer": "^3.29.0",
+    "@payloadcms/next": "^3.29.0",
+    "@payloadcms/plugin-form-builder": "^3.29.0",
+    "@payloadcms/plugin-seo": "^3.29.0",
+    "@payloadcms/richtext-lexical": "^3.29.0",
+    "@payloadcms/storage-s3": "^3.29.0",
     "cross-env": "^7.0.3",
-    "graphql": "^16.8.1",
-    "next": "15.0.4",
-    "payload": "^3.16.0",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "sharp": "0.32.6"
+    "graphql": "^16.10.0",
+    "next": "^15.2.3",
+    "payload": "^3.29.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "@payloadcms/graphql": "^3.16.0",
+    "@payloadcms/graphql": "^3.29.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.1",
-    "@types/node": "^22.5.4",
-    "@types/react": "19.0.1",
-    "@types/react-dom": "19.0.1",
+    "@types/node": "^22.13.11",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
     "eslint": "^8",
-    "eslint-config-next": "15.0.4",
-    "typescript": "5.7.2"
+    "eslint-config-next": "^15.2.3",
+    "typescript": "^5.8.2"
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "license": "MIT",
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "private": true,
+  "scripts": {
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "generate": "yarn generate:importmap && yarn generate:types && yarn generate:db-schema && yarn generate:schema",
+    "generate:db-schema": "cross-env NODE_ENV=development NODE_OPTIONS=--no-deprecation payload generate:db-schema",
+    "generate:importmap": "cross-env NODE_ENV=development NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:schema": "cross-env NODE_ENV=development PAYLOAD_CONFIG_PATH=src/payload.config.ts payload-graphql generate:schema",
+    "generate:types": "cross-env NODE_ENV=development NODE_OPTIONS=--no-deprecation payload generate:types",
+    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+  },
+  "type": "module"
 }

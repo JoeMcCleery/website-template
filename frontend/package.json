@@ -1,35 +1,36 @@
 {
   "name": "frontend",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev --host",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
+  "version": "1.0.0",
   "dependencies": {
-    "@nuxt/image": "1.9.0",
-    "@nuxtjs/color-mode": "3.5.2",
-    "@nuxtjs/fontaine": "0.4.4",
-    "@pinia/nuxt": "^0.9.0",
+    "@nuxt/image": "^1.10.0",
+    "@nuxtjs/color-mode": "^3.5.2",
+    "@nuxtjs/fontaine": "^0.5.0",
+    "@pinia/nuxt": "^0.10.1",
     "@tailwindcss/vite": "^4.0.2",
-    "@vueuse/core": "^12.5.0",
-    "@vueuse/nuxt": "^12.5.0",
-    "nuxt": "^3.15.4",
-    "pinia": "^2.3.1",
+    "@vueuse/core": "^13.0.0",
+    "@vueuse/nuxt": "^13.0.0",
+    "nuxt": "^3.16.1",
+    "pinia": "^3.0.1",
     "qs-esm": "^7.0.2",
     "tailwindcss": "^4.0.2",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
   "devDependencies": {
-    "payload": "^3.28.1",
-    "prettier": "^3.4.2",
+    "payload": "^3.29.0",
+    "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.9",
-    "typescript": "^5.7.3",
-    "vite": "^6.0.11"
-  }
+    "typescript": "^5.8.2",
+    "vite": "^6.2.2"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev --host",
+    "generate": "nuxt generate",
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview"
+  },
+  "type": "module"
 }

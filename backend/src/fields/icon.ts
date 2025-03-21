@@ -1,6 +1,5 @@
 import { Field, FieldHook, OptionObject, deepMerge } from 'payload'
-
-import { toIconName } from '@/utilities/toIconName'
+import { toIconName } from '~/utilities/toIconName'
 
 type IconFieldFactory = (options?: {
   allowNone?: boolean
